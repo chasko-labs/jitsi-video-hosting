@@ -216,7 +216,8 @@ sub display_final_status {
 sub destroy_nlb {
     log_message('INFO', 'Destroying Network Load Balancer...');
     
-    my $cmd = "cd .. && terraform apply -var='nlb_enabled=false' -auto-approve";
+    # Use correct Terraform variable and path for ECS Express deployment
+    my $cmd = "cd ../../jitsi-video-hosting-ops/terraform && terraform apply -var='create_nlb=false' -auto-approve";
     my $result = system($cmd);
     
     if ($result != 0) {

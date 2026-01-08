@@ -72,8 +72,9 @@ sub get_task_ips {
 sub get_target_group_arns {
     log_message('INFO', 'Retrieving NLB target group ARNs...');
     
-    my $udp_tg_cmd = "cd .. && terraform output -raw jvb_nlb_target_group_udp_arn 2>/dev/null";
-    my $tcp_tg_cmd = "cd .. && terraform output -raw jvb_nlb_target_group_tcp_arn 2>/dev/null";
+    # Use correct path for ECS Express deployment
+    my $udp_tg_cmd = "cd ../../jitsi-video-hosting-ops/terraform && terraform output -raw jvb_nlb_target_group_udp_arn 2>/dev/null";
+    my $tcp_tg_cmd = "cd ../../jitsi-video-hosting-ops/terraform && terraform output -raw jvb_nlb_target_group_tcp_arn 2>/dev/null";
     
     my $udp_tg_arn = qx($udp_tg_cmd);
     my $tcp_tg_arn = qx($tcp_tg_cmd);
@@ -82,6 +83,7 @@ sub get_target_group_arns {
     
     if (!$udp_tg_arn || !$tcp_tg_arn) {
         log_message('ERROR', 'Could not retrieve target group ARNs - is NLB enabled?');
+        log_message('INFO', 'Run: cd ../../jitsi-video-hosting-ops/terraform && terraform apply -var="create_nlb=true"');
         return (undef, undef);
     }
     

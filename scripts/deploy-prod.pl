@@ -86,8 +86,10 @@ my $outputs = qx(terraform output -json 2>&1);
 my $output_json = decode_json($outputs);
 
 log_message('SUCCESS', 'Deployment complete!');
-log_message('INFO', "ALB DNS: " . $output_json->{alb_dns_name}{value});
 log_message('INFO', "ECS Cluster: " . $output_json->{ecs_cluster_name}{value});
 log_message('INFO', "ECS Service: " . $output_json->{ecs_service_name}{value});
+log_message('INFO', "Log Groups: " . $output_json->{jitsi_app_log_group}{value});
+log_message('INFO', "Architecture: ECS Express Mode + Service Connect (HTTP/WSS)");
+log_message('INFO', "Media Plane: On-demand NLB (created during scale-up)");
 
 exit 0;

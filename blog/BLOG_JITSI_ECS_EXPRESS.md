@@ -1,40 +1,92 @@
-# Self-Hosted Video Conferencing: Implementing ECS Express Mode for Jitsi Meet
+# Self-Hosted Video Conferencing: ECS Express Mode with UDP Extension for Jitsi Meet
 
 ## Introduction
 
-**December 2025 Update**: We fully implemented AWS ECS Express Mode for our Jitsi video platform, achieving simplified production-ready deployment with zero additional cost. This article documents our implementation journey and the operational benefits we gained.
+**December 2025 Update**: We successfully implemented **ECS Express Mode with UDP extension** for our Jitsi video platform, achieving simplified production-ready deployment while adding WebRTC media support. This article documents our implementation and clarifies a critical architectural principle.
+
+## 🎯 Key Architectural Clarification
+
+**ECS Express Mode + NLB = Additive, Not Replacement**
+
+Adding a Network Load Balancer (NLB) to an ECS Express Mode service does **NOT**:
+- ❌ Disable Express Mode features
+- ❌ Revert to standard ECS  
+- ❌ Remove Express Mode automation
+- ❌ Break Express Mode benefits
+
+**What it DOES:**
+- ✅ Extends Express Mode with UDP support for WebRTC media
+- ✅ Preserves all Express Mode automation and benefits
+- ✅ Adds "one extra battery for UDP workloads"
 
 When we first deployed Jitsi Meet on AWS, we built it the traditional way: hand-crafted Terraform configurations, custom security groups, detailed VPC networking, and a Network Load Balancer setup that required meticulous configuration. It worked perfectly and remains well-architected.
 
-Six months later, when ECS Express Mode was announced, we evaluated whether to migrate. After careful analysis, we decided to **fully implement Express Mode** while preserving our scale-to-zero architecture and operational control. This article documents what we learned and how we achieved production-ready deployment with minimal configuration overhead.
+Six months later, when ECS Express Mode was announced, we evaluated whether to migrate. After careful analysis, we decided to **implement Express Mode with UDP extension** while preserving our scale-to-zero architecture and operational control. This article documents what we learned and how we achieved production-ready deployment with minimal configuration overhead.
 
 ---
 
-## What is ECS Express Mode?
+## What is ECS Express Mode + UDP Extension?
 
-ECS Express Mode is AWS's simplified approach to container orchestration. Rather than managing individual resources, you declare what you want and let AWS handle the infrastructure.
+Our architecture uses **ECS Express Mode as the foundation** with an **additive NLB for UDP traffic**. Think of it as "ECS with batteries included for HTTP apps" plus "one extra battery for UDP workloads."
 
-### Core Benefits of ECS Express Mode
+### Express Mode Benefits (Always Retained)
 
 | Benefit | Details |
 |---------|---------|
-| **Simplified Deployment** | Requires only a container image, task execution role, and infrastructure role. No manual load balancer, IAM, or networking configuration. |
-| **Production-Ready Defaults** | Automatically provisions Fargate-based ECS service, HTTPS-enabled ALB, auto-scaling policies, and CloudWatch monitoring. |
+| **Simplified Deployment** | Requires only a container image, task execution role, and infrastructure role. No manual cluster, capacity, or networking configuration. |
+| **Production-Ready Defaults** | Automatically provisions Fargate-based ECS service, Service Connect for HTTP, auto-scaling policies, and CloudWatch monitoring. |
 | **Developer Productivity** | Fast, independent deployment without deep AWS expertise. Ideal for rapid prototyping and internal tools. |
 | **Platform Team Efficiency** | Self-service deployment model reduces operational overhead. |
-| **Cost Optimization** | Shares ALBs across multiple services (up to 25 per ALB) when networking aligns, reducing infrastructure costs. |
+| **Cost Optimization** | Shares infrastructure across services, ~55% fewer Terraform lines vs standard ECS. |
 | **Full Visibility & Control** | All resources created in your AWS account with direct access and customization capability. |
-| **No Additional Charges** | Only pay for underlying AWS resources (Fargate, ALB, CloudWatch). Express Mode itself is free. |
+| **No Additional Charges** | Only pay for underlying AWS resources (Fargate, NLB, CloudWatch). Express Mode itself is free. |
+
+### UDP Extension (What We Added)
+
+| Component | Purpose |
+|-----------|---------|
+| **On-Demand NLB** | Handle WebRTC media traffic (UDP port 10000) that ALB cannot support |
+| **Conditional Creation** | `count = var.create_nlb ? 1 : 0` - created only when conferences are active |
+| **Operational Scripts** | Automated lifecycle management (create → register → destroy) |
+| **Cost Optimization** | NLB exists only during active conferences, destroyed when idle |
 
 ---
 
 ## Our Implementation
 
+### Two-Plane Architecture
+
+```mermaid
+graph TB
+    subgraph "Control Plane (Express Mode)"
+        SC["🔗 Service Connect<br/>HTTP/WebSocket/XMPP"]
+        EXSVC["⚡ ECS Express Service<br/>Auto-managed cluster & scaling"]
+    end
+    
+    subgraph "Media Plane (UDP Extension)"  
+        NLB["🔗 NLB (On-Demand)<br/>UDP:10000 · TCP:4443"]
+    end
+
+    subgraph "Jitsi Task (Fargate)"
+        WEBX["🌐 Jitsi Web<br/>(HTTP/WSS)"]
+        PROSX["🔊 Prosody<br/>(XMPP)"]
+        JICX["📞 Jicofo<br/>(Conference)"]
+        JVBX["📹 JVB<br/>(Media Bridge)"]
+    end
+
+    SC --> EXSVC
+    NLB --> EXSVC
+    EXSVC --> WEBX
+    EXSVC --> PROSX  
+    EXSVC --> JICX
+    EXSVC --> JVBX
+```
+
 ### What We Implemented
 
-We fully integrated ECS Express Mode features while maintaining our scale-to-zero architecture:
+We fully integrated ECS Express Mode features while adding UDP support for WebRTC:
 
-#### 1. Service Connect (Automatic Service Discovery)
+#### 1. Service Connect (Express Mode - Control Plane)
 ```hcl
 service_connect_configuration {
   enabled   = true

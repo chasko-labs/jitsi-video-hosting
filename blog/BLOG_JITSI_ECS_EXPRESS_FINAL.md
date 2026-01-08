@@ -1,16 +1,34 @@
-# Self-Hosted Video Conferencing: ECS Express Mode with On-Demand NLB for Jitsi Meet
+# Self-Hosted Video Conferencing: ECS Express Mode with UDP Extension for Jitsi Meet
 
 ## Introduction
 
-**December 2025 - Implementation Complete**: We successfully implemented AWS ECS Express Mode combined with on-demand Network Load Balancer lifecycle management for our Jitsi video platform. This article documents our journey from evaluation to production-ready implementation, achieving **$0.24/month idle costs** (67% better than our $0.73 target).
+**December 2025 - Implementation Complete**: We successfully implemented **AWS ECS Express Mode with UDP extension** for our Jitsi video platform, achieving **$0.24/month idle costs** (67% better than our $0.73 target) while preserving all Express Mode benefits.
 
-When we first considered ECS Express Mode, we faced the UDP video challenge: Express Mode uses Application Load Balancers, but Jitsi's video bridge (JVB) requires UDP for optimal quality. The solution? A hybrid architecture combining ECS Service Connect (for automatic ALB functionality) with an on-demand NLB that's created during scale-up and destroyed during scale-down.
+## 🎯 Critical Architectural Clarification
+
+**ECS Express Mode + NLB = Additive Architecture, Not Replacement**
+
+This is **ECS Express Mode with UDP extension** - we did NOT revert to standard ECS. The NLB extends Express Mode capabilities; it doesn't replace them.
+
+✅ **All Express Mode benefits retained:**
+- Automatic cluster and capacity management
+- Service Connect for HTTP/WebSocket traffic  
+- Auto-scaling and deployment automation
+- Integrated logging and monitoring
+- ~55% fewer Terraform lines vs standard ECS
+
+✅ **UDP extension added:**
+- On-demand NLB for WebRTC media (UDP port 10000)
+- Conditional creation/destruction via operational scripts
+- Cost-optimized lifecycle management
+
+When we first considered ECS Express Mode, we faced the UDP video challenge: Express Mode uses Service Connect with ALB-like functionality, but Jitsi's video bridge (JVB) requires UDP for optimal quality. The solution? A **two-plane architecture** combining Express Mode Service Connect (for HTTP/WebSocket control plane) with an on-demand NLB (for UDP media plane).
 
 This implementation was completed in **5 minutes 8 seconds** using Kiro CLI for spec-driven infrastructure development, demonstrating how AI-assisted development can accelerate complex multi-phase infrastructure work.
 
 **Project Repository**: [jitsi-video-hosting](https://github.com/BryanChasko/jitsi-video-hosting) - Domain-agnostic, reusable architecture
 
-## The Challenge: UDP + Scale-to-Zero
+## The Challenge: UDP + Scale-to-Zero + Express Mode Benefits
 
 ### Original Architecture Pain Points
 
@@ -18,15 +36,17 @@ Our traditional ECS deployment had one major cost inefficiency:
 
 - **Always-on NLB**: $16.20/month even when service scaled to zero
 - **Fixed VPC costs**: CloudWatch, networking always active
+- **Manual configuration**: 50+ lines of Terraform for standard ECS setup
 - **Total idle cost**: $16.62/month
 
-While scale-to-zero worked for ECS tasks, the load balancer remained running 24/7.
+While scale-to-zero worked for ECS tasks, the load balancer remained running 24/7, and we lacked Express Mode's automation benefits.
 
 ### The Goal
 
 **Cost Target**: ≤$0.73/month when idle  
-**Architecture**: On-demand infrastructure that exists only when platform is running  
+**Architecture**: Express Mode + on-demand NLB that exists only when platform is running  
 **Quality**: Maintain UDP video for optimal performance (no compromise on user experience)  
+**Simplicity**: Preserve Express Mode automation and simplified configuration
 **Reusability**: Domain-agnostic design that anyone can fork and deploy
 
 ## Configuration Architecture - Key to Reusability

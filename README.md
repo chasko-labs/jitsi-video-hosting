@@ -1,8 +1,26 @@
 # Jitsi Video Hosting Platform - On-Demand, True Scale-to-Zero on AWS
 
-**Self-hosted video conferencing with revolutionary cost control.** Deploy Jitsi Meet on AWS with ECS Express Mode + on-demand NLB lifecycle management, reducing idle costs to just **$0.24/month** (67% better than our $0.73 target).
+**Self-hosted video conferencing with revolutionary cost control.** Deploy Jitsi Meet on AWS with **ECS Express Mode + UDP extension**, reducing idle costs to just **$0.24/month** (67% better than our $0.73 target).
 
-This is a **production-ready**, **domain-agnostic** platform deployed via **spec-driven infrastructure** (Kiro CLI). Perfect for communities, organizations, and teams who want full control over their video infrastructure without paying for idle resources.
+This is a **production-ready**, **domain-agnostic** platform that **extends ECS Express Mode** with on-demand NLB lifecycle management for WebRTC media traffic. Perfect for communities, organizations, and teams who want full control over their video infrastructure without paying for idle resources.
+
+## 🎯 Architecture: ECS Express Mode + UDP Extension
+
+**Key Principle:** This architecture **extends** ECS Express Mode with UDP support - it does **NOT** replace Express Mode benefits.
+
+✅ **All ECS Express Mode benefits retained:**
+- Automatic cluster management
+- Automatic Fargate capacity management  
+- Automatic Service Connect for HTTP traffic
+- Automatic autoscaling policies
+- Automatic deployment wiring
+- Automatic logging and metrics setup
+
+✅ **UDP extension added:**
+- On-demand Network Load Balancer for WebRTC media (UDP port 10000)
+- Conditional creation/destruction via operational scripts
+- Cost-optimized lifecycle management
+- Stable public IP for ICE candidate generation
 
 ## Quick Start - 5 Step Setup
 
@@ -36,7 +54,8 @@ This is a **production-ready**, **domain-agnostic** platform deployed via **spec
 
 📚 **[docs/deployment/IAM_IDENTITY_CENTER_SETUP.md](docs/deployment/IAM_IDENTITY_CENTER_SETUP.md)** - AWS SSO configuration  
 🧪 **[docs/deployment/TESTING.md](docs/deployment/TESTING.md)** - Testing and validation  
-🏭 **[docs/architecture/PRODUCTION_OPTIMIZATION.md](docs/architecture/PRODUCTION_OPTIMIZATION.md)** - Security and monitoring
+🏭 **[docs/architecture/PRODUCTION_OPTIMIZATION.md](docs/architecture/PRODUCTION_OPTIMIZATION.md)** - Security and monitoring  
+⚖️ **[docs/architecture/LOAD_BALANCER_SELECTION_GUIDE.md](docs/architecture/LOAD_BALANCER_SELECTION_GUIDE.md)** - ALB vs NLB cost analysis and scaling economics
 
 ## Configuration Architecture
 
@@ -113,25 +132,31 @@ graph TB
     JVB --> CW
 ```
 
-## Desired Architecture (ECS Express Mode)
+## Desired Architecture (ECS Express Mode + UDP Extension)
+
+**Mental Model:** ECS Express Mode with "one extra battery for UDP workloads"
 
 ```mermaid
 graph TB
+    subgraph "Control Plane (Express Mode)"
+        SC["🔗 Service Connect<br/>HTTP/WebSocket/XMPP"]
+        EXSVC["⚡ ECS Express Service<br/>Auto-managed cluster & scaling"]
+    end
+    
+    subgraph "Media Plane (UDP Extension)"  
+        NLB["🔗 NLB (On-Demand)<br/>UDP:10000 · TCP:4443"]
+    end
+
     subgraph "Your Domain"
         A["🌐 Your Domain<br/>meet.yourdomain.com"]
     end
 
     subgraph "AWS - Us-West-2"
-        subgraph "ECS Express"
-            EXNLB["🔗 NLB (auto-managed)<br/>443 TLS · 10000 UDP"]
-            EXSVC["⚡ Service (Express Mode)<br/>Simplified task + scaling"]
-
-            subgraph "Jitsi Task (Fargate)"
-                WEBX["🌐 Jitsi Web"]
-                PROSX["🔊 Prosody"]
-                JICX["📞 Jicofo"]
-                JVBX["📹 JVB"]
-            end
+        subgraph "Jitsi Task (Fargate)"
+            WEBX["🌐 Jitsi Web<br/>(HTTP/WSS)"]
+            PROSX["🔊 Prosody<br/>(XMPP)"]
+            JICX["📞 Jicofo<br/>(Conference)"]
+            JVBX["📹 JVB<br/>(Media Bridge)"]
         end
 
         S3X["🗂️ S3 Bucket<br/>Recordings"]
@@ -139,15 +164,35 @@ graph TB
         CWX["📊 CloudWatch"]
     end
 
-    A -->|HTTPS| EXNLB
-    EXNLB --> EXSVC
+    A -->|HTTPS/WSS| SC
+    A -->|UDP Media| NLB
+    SC --> EXSVC
+    NLB --> EXSVC
     EXSVC --> WEBX
-    EXSVC -. UDP/10000 .-> JVBX
-    WEBX --> PROSX
-    WEBX --> JICX
-    JICX --> JVBX
+    EXSVC --> PROSX  
+    EXSVC --> JICX
+    EXSVC --> JVBX
     WEBX --> S3X
     WEBX --> SECX
+    JVBX --> CWX
+```
+
+### Why This Architecture Works
+
+**🔄 Two-Plane Design:**
+- **Control Plane**: Service Connect handles HTTP, WebSocket, XMPP signaling
+- **Media Plane**: NLB handles UDP WebRTC media traffic (ALB cannot do UDP)
+
+**⚡ Express Mode Benefits Preserved:**
+- Simplified service configuration (~55% fewer Terraform lines)
+- Auto-managed cluster and capacity providers
+- Built-in autoscaling and health checks
+- Integrated logging and monitoring
+
+**💰 Cost Optimization:**
+- NLB created only when needed (conferences active)
+- NLB destroyed when idle (scale-to-zero)
+- Express Mode efficiency + UDP capability
     JVBX --> CWX
 ```
 
@@ -193,36 +238,53 @@ ECS Express config collapses multiple LB resources into service-level configurat
 ## Cost Model
 
 ```mermaid
-pie title "Monthly Cost Breakdown (Regular Use: 2 hrs/day)"
-    "Fixed Infrastructure" : 16.62
-    "Variable ECS (60 hrs)" : 12.01
-    "Total" : 28.63
+pie title "True Zero-Cost Architecture"
+    "Powered Down (S3+Secrets+DNS)" : 0.92
+    "Powered Up (Full Infrastructure)" : 32.82
 ```
 
 ### Cost Breakdown
 
-**Fixed Costs (Always Running):**
-- Network Load Balancer: $16.20/month
+**Powered Down (True Zero-Cost):**
 - S3 Storage: $0.02/month
 - AWS Secrets Manager: $0.40/month
-- **Total Fixed: $16.62/month**
+- Route 53 Hosted Zone: $0.50/month
+- **Total: $0.92/month**
 
-**Variable Costs (When Running):**
-- ECS Fargate (4 vCPU, 8GB RAM): $0.198/hour
+**Powered Up (Full Infrastructure):**
+- Network Load Balancer: $16.20/month
+- VPC & Networking: $2.17/month
+- CloudWatch Logs: $1.00/month
+- SNS Topics: $0.50/month
+- IAM & Other: $0.50/month
+- S3 + Secrets + DNS: $0.92/month
+- **Fixed Total: $21.29/month**
+- **Variable (ECS Fargate)**: $0.198/hour when running
 
 ### Usage Scenarios
 
-| Scenario | Hours/Month | Variable | Total | vs. Zoom Pro |
-|----------|------------|----------|-------|-------------|
-| **Scaled Down** | 0 | $0.00 | **$16.62** | -100% |
-| **Light** | 10 | $1.98 | **$18.60** | +49% |
-| **Regular** | 60 (2hrs/day) | $12.01 | **$28.63** | +129% |
-| **Heavy** | 120 (4hrs/day) | $23.76 | **$40.38** | +223% |
-| **Always On** | 744 | $147.31 | **$163.93** | +1212% |
+| Scenario | Infrastructure | Hours/Month | Variable | Total | Savings |
+|----------|---------------|------------|----------|-------|---------|
+| **Powered Down** | Destroyed | 0 | $0.00 | **$0.92** | **97%** |
+| **Light Use** | Active | 10 | $1.98 | **$23.27** | 29% |
+| **Regular Use** | Active | 60 | $11.88 | **$33.17** | -6% |
+| **Heavy Use** | Active | 120 | $23.76 | **$45.05** | -44% |
 
-**Key Advantage:** Scale-to-zero saves **$130.31/month** vs always-on deployment (97% savings)
+**Key Innovation:** True zero-cost when not in use - only pay for persistent data storage
+
+### Power Management
+
+- **`./scripts/power-down.pl`** - Destroys ALL infrastructure via Terraform (97% cost reduction)
+- **`./scripts/scale-up.pl`** - Recreates ALL infrastructure via Terraform (3-5 minutes)
+- **Persistent Data**: S3 buckets, Secrets Manager, and DNS records preserved
 
 ## Features
+
+### ⚡ ECS Express Mode + UDP Extension
+- **Express Mode Benefits**: Automatic cluster, capacity, scaling, logging, Service Connect
+- **UDP Extension**: On-demand NLB for WebRTC media traffic (ALB cannot handle UDP)
+- **Additive Architecture**: NLB extends Express Mode, doesn't replace it
+- **Cost Optimized**: NLB lifecycle managed by operational scripts
 
 ### ✅ Self-Hosted
 - **Full Control**: Your data, your infrastructure, your domain
@@ -233,6 +295,7 @@ pie title "Monthly Cost Breakdown (Regular Use: 2 hrs/day)"
 - **Scale-to-Zero**: Automatic power down when idle
 - **Predictable Costs**: Fixed costs visible, variable costs per-hour
 - **Smart Scheduling**: Scale up before events, down after
+- **Express Mode Efficiency**: ~55% fewer Terraform lines vs standard ECS
 
 ### 🔒 Secure
 - **End-to-End**: Industry-standard Jitsi encryption

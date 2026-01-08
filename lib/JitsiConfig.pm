@@ -190,6 +190,8 @@ sub _find_config_file {
 
     # Look for config in parent directory (jitsi-video-hosting-ops)
     my @search_paths = (
+        '../../jitsi-video-hosting-ops/config.json',
+        '../../jitsi-video-hosting-ops/jitsi-config.json',
         '../jitsi-video-hosting-ops/config.json',
         '../jitsi-video-hosting-ops/jitsi-config.json',
     );
