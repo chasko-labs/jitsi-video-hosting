@@ -54,7 +54,11 @@ the rule: any cross-repo change is two PRs minimum, one per repo, reviewed befor
 | secret scanning before any push to this repo | `hs-shannon-theseus-kade-vox-security-scanner`          | hard requirement — no push to public repo without kade-vox pass                                                                                                                                   |
 | CLAUDE.md, steering docs, technical writing  | `hs-shannon-theseus-voss-technical-writer`              |                                                                                                                                                                                                   |
 | style enforcement on README and docs         | `hs-shannon-theseus-scribe-style-enforcer`              |                                                                                                                                                                                                   |
-| terraform apply/plan, perl script edits      | inline (small scope)                                    | git ops for any terraform/perl work still route through orin                                                                                                                                      |
+| health, status, test (read-only AWS queries) | `hs-shannon-theseus-stratia-jitsi-health-monitor`       | wraps status.pl, check-health.pl, test-platform.pl, project-status.pl — no mutations                                                                                                              |
+| cost, orphan detection, scale-to-zero check  | `hs-shannon-theseus-kade-vox-jitsi-cost-guard`          | cost explorer queries, orphan resource detection, confirms scale-to-zero state                                                                                                                    |
+| perl script invocation (scale-up/down/power) | `hs-shannon-theseus-kade-vox-jitsi-perl-ops`            | runs scale-up.pl, scale-down.pl, power-down.pl; power-down.pl internally calls `terraform destroy -auto-approve` — agent surfaces this in narrowing; bryan has approved the allowance             |
+| ECS/NLB/Fargate mutations                    | `hs-shannon-theseus-tarn-jitsi-aws-ops`                 | all mutating ECS, NLB, Fargate operations; read-only health queries route to stratia-jitsi-health-monitor instead                                                                                 |
+| terraform init / plan / apply                | `hs-shannon-theseus-tarn-jitsi-terraform`               | terraform lifecycle ops; `terraform destroy` is hard-blocked — fully-destroy.pl trigger routes through the hard trigger below, not through this agent                                             |
 | rust tooling if introduced                   | `hs-shannon-theseus-solan-rust-coder`                   | not currently in scope; escalate if rust appears                                                                                                                                                  |
 
 ---
@@ -94,13 +98,14 @@ always include `--use-device-code` — never the bare form. this applies on rocm
 
 ## hard triggers
 
-| trigger                                                   | action                                                                           |
-| --------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| any push to this repo (public)                            | kade-vox secret scan first — no exceptions                                       |
-| `fully-destroy.pl` or `terraform destroy` in scope        | stop, confirm with bryan, then dispatch orin                                     |
-| config.json schema change in either repo                  | two sequential PRs, orin commits — never batch                                   |
-| AWS SSO profile needs login                               | use `aws sso login --profile jitsi-video-hosting-170473530355 --use-device-code` |
-| any content from ops repo appears in a diff for this repo | halt, do not push, dispatch kade-vox to assess scope of leak                     |
+| trigger                                                   | action                                                                                                                                                |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| any push to this repo (public)                            | kade-vox secret scan first — no exceptions                                                                                                            |
+| `fully-destroy.pl` or `terraform destroy` in scope        | stop, confirm with bryan, then dispatch orin                                                                                                          |
+| config.json schema change in either repo                  | two sequential PRs, orin commits — never batch                                                                                                        |
+| AWS SSO profile needs login                               | use `aws sso login --profile jitsi-video-hosting-170473530355 --use-device-code`                                                                      |
+| any content from ops repo appears in a diff for this repo | halt, do not push, dispatch kade-vox to assess scope of leak                                                                                          |
+| any jitsi agent dispatched without account verification   | all five jitsi agents run `sts get-caller-identity` as Step 0 and verify account `170473530355` — this fires automatically; harald does not pre-check |
 
 ---
 
