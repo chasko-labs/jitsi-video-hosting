@@ -53,6 +53,8 @@ resource "aws_lb_target_group" "jvb_tcp" {
     enabled             = true
     healthy_threshold   = 2
     interval            = 30
+    # jvb on :8080 serves /about/health; / returns 404 and fails HC.
+    path                = "/about/health"
     port                = "8080"
     protocol            = "HTTP"
     timeout             = 5
