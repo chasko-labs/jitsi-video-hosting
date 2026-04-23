@@ -1,5 +1,7 @@
 # True Zero-Cost Architecture Guide: Revolutionary Cost Optimization
 
+> **doc status (2026-04-23):** current. cost model ($0.92/mo idle, Fargate variable rate) remains accurate. ALB vs NLB selection rationale is unchanged. multi-hostname setup (cross-account Route53 alias + additional SNI cert on ALB) is additive and does not alter the analysis here
+
 ## Executive Summary
 
 Traditional scale-to-zero architectures preserve infrastructure for instant scaling, costing $16.62/month when idle. Our true zero-cost approach destroys ALL infrastructure when not in use, achieving $0.92/month (97% cost reduction) with 3-5 minute restoration via Terraform.

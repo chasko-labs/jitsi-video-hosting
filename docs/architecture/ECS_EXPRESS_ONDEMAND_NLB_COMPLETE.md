@@ -1,5 +1,7 @@
 # ECS Express with On-Demand NLB - Implementation Complete
 
+> **doc status (2026-04-23):** partially current. the NLB module structure, on-demand lifecycle pattern, cost model, and scale-to-zero design described here remain accurate. idle cost figure of $0.73/mo is superseded — current idle cost is $0.92/mo (S3 + Secrets Manager + Route53). the task definition section pre-dates the 4-container restoration (prosody/jicofo/jvb were briefly missing after a late-2025 account migration; all four containers are confirmed running as of 2026-04-23). JWT auth on prosody is not covered here — see README authentication section
+
 ## Implementation Summary ✅
 
 All phases of the ECS Express with On-Demand NLB specification have been successfully implemented, achieving the target idle cost of $0.73/month or less.

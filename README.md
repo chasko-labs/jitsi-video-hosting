@@ -94,86 +94,102 @@ See [CONFIG_GUIDE.md](CONFIG_GUIDE.md) for setup details.
 | **SSL/TLS** | ✅ Configured | Valid certificates via AWS Certificate Manager |
 | **AI Development** | ✅ Spec-Driven | Kiro CLI implementation (14 tasks in 5min 8s) |
 
-## Architecture Overview
+## Current Architecture Overview
 
 ```mermaid
 graph TB
-    subgraph "Your Domain"
-        A["🌐 Your Domain<br/>meet.yourdomain.com"]
+    subgraph "DNS (cross-account)"
+        DNS["Route53 A+AAAA alias<br/>meet.yourdomain.com<br/>(hosted zone in issuer account)"]
     end
-    
-    subgraph "AWS - Us-West-2"
-        NLB["🔗 Network Load Balancer<br/>Port 443 TLS<br/>Port 10000 UDP"]
-        
-        subgraph "ECS Fargate Cluster"
-            WEB["🌐 Jitsi Web<br/>Port 80"]
-            PROSODY["🔊 Prosody<br/>XMPP Server"]
-            JICOFO["📞 Jicofo<br/>Conference Focus"]
-            JVB["📹 JVB<br/>Video Bridge"]
+
+    subgraph "AWS - us-west-2 (jitsi account)"
+        ALB["Application Load Balancer<br/>HTTPS :443<br/>SNI: meet.yourdomain.com + meet.bryanchasko.com"]
+        NLB["Network Load Balancer (on-demand)<br/>UDP :10000 / TCP :4443"]
+
+        subgraph "Fargate task — 2 vCPU / 4 GB (one composite task)"
+            WEB["jitsi-web<br/>nginx + Jitsi Meet UI"]
+            PROSODY["prosody<br/>XMPP — AUTH_TYPE=jwt<br/>JWT_APP_ID=${var.project_name}<br/>issuer: clouddelnorte-auth"]
+            JICOFO["jicofo<br/>conference focus"]
+            JVB["jvb<br/>WebRTC media bridge<br/>UDP :10000 / TCP :4443 / HTTP :8080"]
         end
-        
-        subgraph "Storage & Secrets"
-            S3["🗂️ S3 Bucket<br/>Video Recordings"]
-            SECRETS["🔐 Secrets Manager<br/>Component Credentials"]
+
+        subgraph "secrets + storage"
+            SSM["SSM Parameter Store<br/>/jitsi-video-platform/*<br/>5 internal XMPP secrets (SecureString)"]
+            SM["Secrets Manager<br/>${project}/jitsi-jwt-secret<br/>KMS alias/cloud-del-norte"]
+            S3["S3 — recordings"]
         end
-        
-        CW["📊 CloudWatch<br/>Logs & Metrics"]
+
+        CW["CloudWatch logs + metrics"]
     end
-    
-    A -->|HTTPS| NLB
-    NLB -->|80| WEB
-    NLB -->|10000| JVB
+
+    subgraph "JWT issuer (separate account)"
+        LAMBDA["token-exchange Lambda<br/>chasko-labs/cloud-del-norte-meet<br/>signs JWTs with same shared secret"]
+    end
+
+    DNS -->|alias| ALB
+    ALB -->|:80| WEB
+    NLB -->|UDP :10000| JVB
+    NLB -->|TCP :4443| JVB
     WEB --> PROSODY
     WEB --> JICOFO
     JICOFO --> JVB
-    JVB -->|WebSocket| WEB
+    PROSODY --> SM
+    WEB --> SSM
+    PROSODY --> SSM
+    JVB --> SSM
     WEB --> S3
-    WEB --> SECRETS
     JVB --> CW
+    LAMBDA -.->|JWT (RS256/HS256)| PROSODY
 ```
 
-## Desired Architecture (ECS Express Mode + UDP Extension)
+## Production Architecture (ECS Express Mode + UDP Extension)
 
-**Mental Model:** ECS Express Mode with "one extra battery for UDP workloads"
+**mental model:** ECS Express Mode handles HTTP/HTTPS signaling; on-demand NLB handles WebRTC UDP media. four jitsi containers run as sidecars in a single Fargate task. prosody enforces JWT auth — clients without a valid token cannot create or join rooms
 
 ```mermaid
 graph TB
-    subgraph "Control Plane (Express Mode)"
-        SC["🔗 Service Connect<br/>HTTP/WebSocket/XMPP"]
-        EXSVC["⚡ ECS Express Service<br/>Auto-managed cluster & scaling"]
-    end
-    
-    subgraph "Media Plane (UDP Extension)"  
-        NLB["🔗 NLB (On-Demand)<br/>UDP:10000 · TCP:4443"]
+    subgraph "control plane (Express Mode)"
+        SC["Service Connect<br/>HTTP/WebSocket/XMPP"]
+        ALB["ALB (auto-managed)<br/>HTTPS:443"]
+        EXSVC["ECS Express Service<br/>desired_count=0 at idle"]
     end
 
-    subgraph "Your Domain"
-        A["🌐 Your Domain<br/>meet.yourdomain.com"]
+    subgraph "media plane (UDP extension)"
+        NLB["NLB (on-demand)<br/>UDP:10000 / TCP:4443"]
     end
 
-    subgraph "AWS - Us-West-2"
-        subgraph "Jitsi Task (Fargate)"
-            WEBX["🌐 Jitsi Web<br/>(HTTP/WSS)"]
-            PROSX["🔊 Prosody<br/>(XMPP)"]
-            JICX["📞 Jicofo<br/>(Conference)"]
-            JVBX["📹 JVB<br/>(Media Bridge)"]
+    subgraph "your domain"
+        A["meet.yourdomain.com<br/>Route53 alias (cross-account OK)"]
+    end
+
+    subgraph "AWS - us-west-2"
+        subgraph "Fargate task — 2 vCPU / 4 GB"
+            WEBX["jitsi-web"]
+            PROSX["prosody (XMPP)<br/>AUTH_TYPE=jwt"]
+            JICX["jicofo"]
+            JVBX["jvb (media bridge)<br/>UDP:10000 / TCP:4443 / HTTP:8080"]
         end
 
-        S3X["🗂️ S3 Bucket<br/>Recordings"]
-        SECX["🔐 Secrets Manager"]
-        CWX["📊 CloudWatch"]
+        SSM["SSM /jitsi-video-platform/*<br/>5 internal XMPP SecureStrings"]
+        SM["Secrets Manager<br/>jitsi-jwt-secret (KMS)"]
+        S3X["S3 — recordings"]
+        CWX["CloudWatch"]
     end
 
-    A -->|HTTPS/WSS| SC
-    A -->|UDP Media| NLB
+    A -->|alias| ALB
+    A -->|UDP media| NLB
+    ALB --> SC
     SC --> EXSVC
     NLB --> EXSVC
     EXSVC --> WEBX
-    EXSVC --> PROSX  
+    EXSVC --> PROSX
     EXSVC --> JICX
     EXSVC --> JVBX
+    PROSX --> SM
+    WEBX --> SSM
+    PROSX --> SSM
+    JVBX --> SSM
     WEBX --> S3X
-    WEBX --> SECX
     JVBX --> CWX
 ```
 
@@ -528,40 +544,133 @@ The platform has been successfully deployed and is **fully operational**:
 
 ### Current Architecture
 
-- **Task Definition**: Multi-container Jitsi stack with WebSocket support
-- **Container Count**: 4 containers (jitsi-web, prosody, jicofo, jvb)
-- **Resource Allocation**: 4 vCPU / 8GB RAM (configurable)
-- **Network**: Network Load Balancer with TLS termination
-- **Storage**: S3 bucket for video recordings
-- **Cost Optimization**: Automatic scale-to-zero when idle
+- **task definition**: 4 sidecars in one Fargate task — jitsi-web, prosody, jicofo, jvb
+- **container count**: 4 containers, one composite task (`desired_count=1` active, `0` idle)
+- **resource allocation**: 2 vCPU / 4 GB RAM per task
+- **auth**: prosody enforces JWT auth (`AUTH_TYPE=jwt`); `ENABLE_GUESTS=0`
+- **network**: ALB (HTTPS :443) + on-demand NLB (UDP :10000, TCP :4443)
+- **secrets**: 5 internal XMPP secrets in SSM Parameter Store; JWT shared secret in Secrets Manager (KMS)
+- **dns**: Route53 alias in issuer account points at ALB; both hostnames share one backend
+- **cost optimization**: `power-down.pl` destroys compute via `terraform destroy`; `scale-up.pl` rebuilds in 3-5 min
 
 ## Next Steps & Roadmap
 
 ```mermaid
 graph TD
-    A["📍 Current State<br/>Core Platform Live"] -->|Phase 2| B["🔐 Authentication<br/>Cognito/OAuth"]
-    B -->|Phase 3| C["🎥 Recording<br/>Jibri Support"]
-    B -->|Phase 3| D["📊 Monitoring<br/>Advanced Dashboards"]
-    C -->|Phase 3| E["🔒 Security<br/>Hardening"]
-    D --> F["✨ Production Ready<br/>Enterprise Features"]
+    A["current state<br/>4-container stack live<br/>JWT auth active"] -->|next| C["recording<br/>Jibri support"]
+    A -->|next| D["monitoring<br/>advanced dashboards"]
+    C --> E["security hardening"]
+    D --> F["production ready<br/>enterprise features"]
     E --> F
-    
+
     style A fill:#90EE90
     style F fill:#FFD700
 ```
 
 ### Planned Features
 
-- **Phase 2: Authentication & Branding**
-  - Cognito authentication for gated access
-  - Social login (GitHub, Google)
-  - Custom branding for your organization
+- **recording**: Jibri service for in-meeting video capture
+- **monitoring**: advanced CloudWatch dashboards, alerting
+- **security**: automated secret rotation, compliance hardening
 
-- **Phase 3: Enhanced Features**
-  - Video recording with Jibri service
-  - Advanced CloudWatch dashboards
-  - Security hardening and compliance
-  - Secret rotation automation
+## Authentication
+
+prosody runs in JWT mode (`AUTH_TYPE=jwt`). clients must present a signed JWT to create or join rooms. guests (`ENABLE_GUESTS=0`) are rejected at the XMPP layer
+
+### JWT claims
+
+| claim | value |
+|---|---|
+| `iss` | `${var.jwt_accepted_issuers}` — e.g. `clouddelnorte-auth` |
+| `aud` | `${var.jwt_accepted_audiences}` — e.g. `jitsi` |
+| `sub` | your domain (matched against `JWT_APP_ID`) |
+| `room` | specific room name, or `*` for all rooms |
+| `exp` | short-lived; recommend 3600s max |
+
+### where the secret lives
+
+the JWT shared secret is stored in AWS Secrets Manager under `${var.project_name}/jitsi-jwt-secret`, encrypted with a KMS customer-managed key (`alias/${var.project_name}`). prosody fetches it at task startup via the ECS execution role. the same secret must be used by whatever service mints tokens for your users
+
+for this deployment, `chasko-labs/cloud-del-norte-meet` hosts the token-exchange Lambda that issues JWTs. if you fork this repo for a different domain, replace that reference with your own issuer
+
+### IAM grants (execution role)
+
+- `ssm:GetParameter` on `/jitsi-video-platform/*` (5 internal XMPP secrets)
+- `secretsmanager:GetSecretValue` on the JWT secret ARN
+- `kms:Decrypt` on `alias/${var.project_name}`
+
+## How to Maintain
+
+### scale-up / scale-down / power-down flow
+
+```
+scale-up.pl      # terraform apply — recreates VPC, ECS service, NLB (3-5 min)
+scale-down.pl    # sets desired_count=0 — task stops, NLB stays (instant)
+power-down.pl    # terraform destroy — tears down compute; S3/Secrets/Route53 preserved
+```
+
+`power-down.pl` is the intended scale-to-zero path — it brings the account to $0.92/mo. `scale-up.pl` fully restores from that state
+
+if orphan VPCs accumulate from prior partial teardowns:
+```
+scripts/cleanup-orphan-vpcs.pl --dry-run   # preview
+scripts/cleanup-orphan-vpcs.pl             # delete; auto-runs refresh-tfstate.pl after
+```
+
+to sync tfstate with AWS reality after any out-of-band change:
+```
+scripts/refresh-tfstate.pl   # terraform apply -refresh-only; no resource mutations
+```
+
+### JWT secret rotation
+
+1. generate a new secret value
+2. update Secrets Manager: `aws secretsmanager put-secret-value --secret-id ${var.project_name}/jitsi-jwt-secret --secret-string '<new-value>'`
+3. update the same value in your token-exchange service (e.g. `chasko-labs/cloud-del-norte-meet` Lambda env var)
+4. redeploy the ECS task so prosody picks up the new secret: `scripts/scale-down.pl && scripts/scale-up.pl`
+
+no terraform apply required for this rotation path — Secrets Manager handles versioning
+
+### internal XMPP secret rotation
+
+XMPP secrets (jicofo_component, jicofo_auth, jvb_component, jvb_auth, jigasi_auth) are generated by Terraform `random_password` resources stored in SSM. to rotate one:
+
+```
+# in your ops repo
+terraform taint random_password.jicofo_auth   # marks for regeneration
+terraform apply                               # generates new value, updates SSM
+scripts/scale-down.pl && scripts/scale-up.pl  # redeploy task
+```
+
+## How to Remove
+
+### compute-only teardown (recommended for idle periods)
+
+```
+scripts/power-down.pl
+```
+
+tears down ECS, NLB, VPC — preserves S3, Secrets Manager, Route53. cost drops to $0.92/mo. `scale-up.pl` fully restores
+
+### full stack teardown (irreversible)
+
+```
+scripts/fully-destroy.pl
+```
+
+**destructive and irreversible** — deletes S3, Secrets Manager entries, Route53 records. confirm with the operator before running. for full terraform-level teardown sequence, see `BryanChasko/jitsi-video-hosting-ops` ops repo
+
+> the rule: `fully-destroy.pl` and `terraform destroy` require explicit operator confirmation — no exceptions
+
+## Related Repositories
+
+| repo | role |
+|---|---|
+| `chasko-labs/jitsi-video-hosting` (this repo) | public IaC, Perl scripts, `lib/JitsiConfig.pm` |
+| `BryanChasko/jitsi-video-hosting-ops` | private ops repo — `config.json`, tfstate, terraform.tfvars |
+| `chasko-labs/cloud-del-norte-meet` | JWT issuer — token-exchange Lambda that signs JWTs for this Jitsi deployment |
+
+`lib/JitsiConfig.pm` is the bridge between the two repos. any change to the config schema in `JitsiConfig.pm` requires parallel commits in both repos
 
 ## Contributing
 

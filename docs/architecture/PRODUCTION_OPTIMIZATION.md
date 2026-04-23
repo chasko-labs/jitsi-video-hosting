@@ -1,5 +1,7 @@
 # Jitsi Container Production Optimization Guide
 
+> **doc status (2026-04-23):** largely current. environment variable recommendations, NAT traversal config, JVB health check path (`/about/health`), and scale-to-zero patterns are still accurate. the Secrets Manager integration described here was later supplemented by SSM (5 internal XMPP secrets) and JWT (shared secret in Secrets Manager, KMS). for current secrets architecture, see README authentication section + `SSM_MIGRATION_COMPLETE.md`
+
 ## Overview
 
 This document outlines the comprehensive production optimizations implemented for the Jitsi Meet deployment on AWS. The enhancements focus on security, performance, scalability, monitoring, and video recording capabilities while maintaining the existing scale-to-zero architecture.
