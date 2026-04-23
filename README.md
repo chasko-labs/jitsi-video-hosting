@@ -4,6 +4,17 @@
 
 This is a **production-ready**, **domain-agnostic** platform that **extends ECS Express Mode** with on-demand NLB lifecycle management for WebRTC media traffic. Perfect for communities, organizations, and teams who want full control over their video infrastructure without paying for idle resources.
 
+---
+
+## milestone — first verified call: 2026-04-23
+
+- first end-to-end video call confirmed: sign-in → JWT exchange → jitsi room join with live video/audio
+- first-user bootstrap complete — one moderator exists, room creation is live
+- full stack live: Cognito auth → token-exchange Lambda → prosody JWT validation → WebRTC media via NLB UDP :10000
+- operational detail, asset inventory, spin-up/down playbooks: `BryanChasko/jitsi-video-hosting-ops` `OPERATIONS.md`
+
+---
+
 ## 🎯 Architecture: ECS Express Mode + UDP Extension
 
 **Key Principle:** This architecture **extends** ECS Express Mode with UDP support - it does **NOT** replace Express Mode benefits.
