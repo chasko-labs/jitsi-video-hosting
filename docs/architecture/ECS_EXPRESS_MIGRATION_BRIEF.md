@@ -3,6 +3,8 @@
 **Date**: December 15, 2025  
 **Status**: Ready for Kiro spec
 
+> **doc status (2026-04-23):** current as a historical migration record. the Express Mode architecture described is still in production. this doc predates the JWT auth addition and the 4-container restoration — neither affects the Express Mode topology
+
 ---
 
 ## 1. What Express Mode Handles (Auto-Provisioned)

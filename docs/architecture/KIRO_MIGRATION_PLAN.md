@@ -1,5 +1,7 @@
 # Jitsi Platform Configuration Guide - Domain-Agnostic Refactoring
 
+> **doc status (2026-04-23):** current. the domain-agnostic config pattern via `lib/JitsiConfig.pm` and private ops repo is still the correct model. no changes to this pattern from the 4-container restore or JWT addition
+
 ## Overview
 
 This guide explains how the Jitsi platform has been refactored to be **domain-agnostic** and **profile-agnostic**. All sensitive configuration (domain names, AWS profiles) is now externalized to a private repository.

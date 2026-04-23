@@ -1,5 +1,7 @@
 # ECS Express Mode Features - Implementation Summary
 
+> **doc status (2026-04-23):** current. ECS Express Mode with Service Connect is still the deployment model. all features listed here remain active. this doc pre-dates JWT auth and the 4-container sidecar restoration — those additions are orthogonal to Express Mode and do not change what is described here
+
 **Date**: December 27, 2025  
 **Status**: ✅ Fully Implemented
 

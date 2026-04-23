@@ -1,5 +1,7 @@
 # SSM Parameter Store Migration - Implementation Complete
 
+> **doc status (2026-04-23):** partially current. SSM is still the store for the 5 internal XMPP secrets (jicofo_component, jicofo_auth, jvb_component, jvb_auth, jigasi_auth) at `/jitsi-video-platform/*`. the migration from Secrets Manager to SSM for those secrets is accurate. however, Secrets Manager was re-introduced alongside SSM: the JWT shared secret (`${project_name}/jitsi-jwt-secret`, KMS-encrypted under `alias/${project_name}`) lives in Secrets Manager, not SSM. the IAM execution role now holds grants for both SSM (`ssm:GetParameter`) and Secrets Manager (`secretsmanager:GetSecretValue`) + `kms:Decrypt`
+
 ## Tasks Completed ✅
 
 ### Task 1: Create SSM Parameter Resources ✅

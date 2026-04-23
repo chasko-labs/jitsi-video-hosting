@@ -1,5 +1,7 @@
 # Production Optimization Implementation Summary
 
+> **doc status (2026-04-23):** current for the items it covers. all optimizations listed here remain in place. this doc pre-dates JWT auth — see README authentication section for that addition. the "4 containers" shape described is confirmed accurate as of 2026-04-23 (all four sidecars — jitsi-web, prosody, jicofo, jvb — are running in one Fargate task)
+
 ## ✅ Requirements Fulfilled
 
 ### 1. Review and Optimize Container Environment Variables
