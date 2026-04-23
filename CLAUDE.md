@@ -56,7 +56,7 @@ the rule: any cross-repo change is two PRs minimum, one per repo, reviewed befor
 | style enforcement on README and docs         | `hs-shannon-theseus-scribe-style-enforcer`              |                                                                                                                                                                                                                                               |
 | health, status, test (read-only AWS queries) | `hs-shannon-theseus-stratia-jitsi-health-monitor`       | wraps status.pl, check-health.pl, test-platform.pl, project-status.pl — no mutations                                                                                                                                                          |
 | cost, orphan detection, scale-to-zero check  | `hs-shannon-theseus-kade-vox-jitsi-cost-guard`          | cost explorer queries, orphan resource detection, confirms scale-to-zero state                                                                                                                                                                |
-| perl script invocation (scale-up/down/power) | `hs-shannon-theseus-kade-vox-jitsi-perl-ops`            | runs scale-up.pl, scale-down.pl, power-down.pl; power-down.pl tears down compute via `terraform destroy -auto-approve` to reach $0.92/mo idle — this is the intended scale-to-zero design, S3/Secrets/Route53 preserved, scale-up.pl rebuilds |
+| perl script invocation (scale-up/down/power, orphan cleanup, state sync) | `hs-shannon-theseus-kade-vox-jitsi-perl-ops`            | runs scale-up.pl, scale-down.pl, power-down.pl, cleanup-orphan-vpcs.pl, refresh-tfstate.pl; power-down.pl tears down compute via `terraform destroy -auto-approve` to reach $0.92/mo idle — this is the intended scale-to-zero design, S3/Secrets/Route53 preserved, scale-up.pl rebuilds; cleanup-orphan-vpcs.pl deletes VPCs stranded by prior partial teardowns and chains into refresh-tfstate.pl automatically |
 | ECS/NLB/Fargate mutations                    | `hs-shannon-theseus-tarn-jitsi-aws-ops`                 | all mutating ECS, NLB, Fargate operations; read-only health queries route to stratia-jitsi-health-monitor instead                                                                                                                             |
 | terraform init / plan / apply                | `hs-shannon-theseus-tarn-jitsi-terraform`               | terraform lifecycle ops; `terraform destroy` is hard-blocked — fully-destroy.pl trigger routes through the hard trigger below, not through this agent                                                                                         |
 | rust tooling if introduced                   | `hs-shannon-theseus-solan-rust-coder`                   | not currently in scope; escalate if rust appears                                                                                                                                                                                              |
@@ -77,8 +77,14 @@ scripts live in this repo under `scripts/`. they consume config surfaced by `lib
 | `power-down.pl`     | soft power-down of running services  | medium      |
 | `fully-destroy.pl`  | irreversible full stack teardown     | destructive |
 | `project-status.pl` | combined project + infra status      | read-only   |
+| `cleanup-orphan-vpcs.pl` | delete orphan VPCs (by Name tag) left behind by prior teardowns; refuses VPCs with ENIs or active NAT gateways; `--dry-run` supported; auto-invokes `refresh-tfstate.pl` post-delete | destructive |
+| `refresh-tfstate.pl` | sync terraform.tfstate with AWS reality via `terraform apply -refresh-only -auto-approve`; no resource mutations; `--dry-run` previews drift | medium |
 
 the rule: `fully-destroy.pl` and `terraform destroy` are destructive and irreversible — confirm with bryan before orin acts on either, no exceptions
+
+`cleanup-orphan-vpcs.pl` is destructive but recoverable — `scale-up.pl` rebuilds any VPC it deletes. still requires bryan confirmation before running without `--dry-run`. post-cleanup, the script auto-runs `refresh-tfstate.pl` to sync tfstate with reality; opt out with `--no-refresh-tfstate` if terraform is unavailable or state lives elsewhere
+
+`refresh-tfstate.pl` is safe to run standalone any time out-of-band AWS changes are suspected — it only reads AWS and updates state, never mutates resources
 
 ---
 
