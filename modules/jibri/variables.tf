@@ -80,3 +80,15 @@ variable "prosody_dns" {
   description = "Cloud Map DNS name for the jitsi service (prosody). Resolved via Route 53 private hosted zone."
   type        = string
 }
+
+variable "task_memory" {
+  description = "Container memory (MiB) for the Jibri container. t3.medium ~3800 MiB usable; leave headroom for ECS agent/OS. Reduced from 3584 to 3072 to safely accommodate sharedMemorySize=2048 (counts against container memory)."
+  type        = number
+  default     = 3072
+}
+
+variable "task_cpu" {
+  description = "Container CPU units for the Jibri container (1024 = 1 vCPU). t3.medium = 2048 total."
+  type        = number
+  default     = 1536
+}

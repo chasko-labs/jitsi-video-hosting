@@ -31,7 +31,7 @@ resource "aws_iam_role_policy_attachment" "jibri_ecs_ec2" {
 
 resource "aws_iam_role_policy" "jibri_s3" {
   name = "${var.project_name}-jibri-s3"
-  role = aws_iam_role.jibri_instance.id
+  role = aws_iam_role.jibri_task.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -44,6 +44,25 @@ resource "aws_iam_role_policy" "jibri_s3" {
       ]
     }]
   })
+}
+
+resource "aws_iam_role" "jibri_task" {
+  name = "${var.project_name}-jibri-task-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Action    = "sts:AssumeRole"
+      Principal = { Service = "ecs-tasks.amazonaws.com" }
+    }]
+  })
+
+  tags = {
+    Name        = "${var.project_name}-jibri-task-role"
+    Project     = var.project_name
+    Environment = var.environment
+  }
 }
 
 resource "aws_iam_instance_profile" "jibri" {
@@ -155,7 +174,7 @@ resource "aws_ecs_task_definition" "jibri" {
   family                   = "${var.project_name}-jibri"
   requires_compatibilities = ["EC2"]
   network_mode             = "awsvpc"
-  task_role_arn            = aws_iam_role.jibri_instance.arn
+  task_role_arn            = aws_iam_role.jibri_task.arn
   execution_role_arn       = var.ecs_task_execution_role_arn
 
   volume {
@@ -167,11 +186,14 @@ resource "aws_ecs_task_definition" "jibri" {
     name      = "jibri"
     image     = "jitsi/jibri:stable"
     essential = true
+    memory    = var.task_memory
+    cpu       = var.task_cpu
 
     # Jibri requires a privileged container for snd-aloop and Chrome sandbox.
     privileged = true
 
     linuxParameters = {
+      sharedMemorySize = 2048
       devices = [{
         hostPath      = "/dev/snd"
         containerPath = "/dev/snd"
