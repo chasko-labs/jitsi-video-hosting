@@ -54,9 +54,9 @@ variable "ecs_task_execution_role_arn" {
 }
 
 variable "instance_type" {
-  description = "EC2 instance type for Jibri"
+  description = "EC2 instance type for Jibri. m5.xlarge provides 16 GB RAM (Jibri minimum 8 GB for 720p, 12 GB for 1080p) and non-burstable 4 vCPU for sustained ffmpeg encoding over multi-hour sessions."
   type        = string
-  default     = "t3.medium"
+  default     = "m5.xlarge"
 }
 
 variable "jibri_count" {
@@ -82,13 +82,13 @@ variable "prosody_dns" {
 }
 
 variable "task_memory" {
-  description = "Container memory (MiB) for the Jibri container. t3.medium ~3800 MiB usable; leave headroom for ECS agent/OS. Reduced from 3584 to 3072 to safely accommodate sharedMemorySize=2048 (counts against container memory)."
+  description = "Container memory (MiB) for the Jibri container. m5.xlarge provides ~15800 MiB usable; 12288 gives Chrome + ffmpeg + shm=2048 real headroom for 1080p@30fps recording while leaving ~3.5 GB for OS/ECS agent."
   type        = number
-  default     = 3072
+  default     = 12288
 }
 
 variable "task_cpu" {
-  description = "Container CPU units for the Jibri container (1024 = 1 vCPU). t3.medium = 2048 total."
+  description = "Container CPU units for the Jibri container (1024 = 1 vCPU). m5.xlarge = 4096 total; 3072 dedicates 3 vCPU to ffmpeg+Chrome, leaving 1 vCPU for ECS agent/OS."
   type        = number
-  default     = 1536
+  default     = 3072
 }
