@@ -75,17 +75,39 @@ Chrome starts, ChromeDriver creates a session (session ID visible in logs), then
 
 ## Remaining Fix (P0 — blocks Aug 30 event)
 
-**Option A (recommended): Add NAT gateway to the Jibri subnet**
+**Option A (recommended): Switch to bridge networking ($0)**
 
-This gives the task ENI outbound internet access. Set PUBLIC_URL back to `https://meet.clouddelnorte.org`. Chrome loads the meeting page over the public internet like it was designed to. Cost: ~$32/month.
+Change the task definition from `network_mode = "awsvpc"` to `network_mode = "bridge"`. The container inherits the EC2 host's full network stack (including internet access via the instance's public IP). Set PUBLIC_URL back to `https://meet.clouddelnorte.org`.
 
-**Option B: Configure internal TLS on jitsi-web**
+Terraform change:
 
-Add TLS termination at the web container so `https://jitsi.jitsi.local:443` works internally. Requires a self-signed cert + Chrome `--ignore-certificate-errors` flag (already in the flags list). More complex, saves $32/month.
+```hcl
+# modules/jibri/main.tf
+network_mode = "bridge"  # was "awsvpc"
+```
 
-**Option C: Bridge networking**
+Remove `network_configuration` from the ECS service resource. Cost: $0. Complexity: trivial.
 
-Switch the Jibri task from `awsvpc` to `bridge` network mode. The task uses the EC2 instance's network stack (which has internet via the instance's public IP). Requires terraform change to the task definition.
+Jibri only makes outbound connections (to web server, XMPP, S3). Nothing discovers Jibri by IP — so Cloud Map service discovery is irrelevant for this service.
+
+**Option B: Internal DNS mapping (community pattern, $0)**
+
+Use the ECS task definition's `extraHosts` parameter to map `meet.clouddelnorte.org` to the internal web container IP. Chrome navigates to the public hostname but resolves to the internal service. Downside: breaks when the web container IP changes (task replacement).
+
+**Option C: NAT instance (t3a.nano, $3.43/month)**
+
+A t3a.nano running iptables MASQUERADE in the public subnet. Gives the private subnet outbound internet via a cheap instance. More complex to set up and monitor than bridge mode.
+
+**Option D: NAT gateway ($32.85/month — NOT recommended)**
+
+AWS managed NAT. Reliable but costs $32.85/month flat (24/7 hourly billing, cannot stop/start). For a community project recording 2-4 hours/month, this is a 50x cost increase over the entire backend. Not justified.
+
+### Research findings (2026-08-24)
+
+- The jitsi-web Docker container bundles ALL static assets (JS, CSS, images). No external CDN fetch needed to load the meeting page
+- Media flows through JVB internally within the VPC. STUN/TURN is only needed for peer-to-peer (which should be disabled for server-recorded conferences)
+- The Jitsi community's standard Docker solution is `extra_hosts` mapping the public hostname to the internal IP
+- Bridge mode is the simplest ECS-native solution: one terraform line change, zero cost, inherits host internet
 
 ---
 
