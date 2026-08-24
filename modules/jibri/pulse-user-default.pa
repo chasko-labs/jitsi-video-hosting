@@ -1,0 +1,18 @@
+# PulseAudio user config for Jibri — virtual audio without snd-aloop.
+# This file replaces /home/jibri/.config/pulse/default.pa
+
+# Core modules (no .fail — degrade gracefully)
+load-module module-device-restore
+load-module module-stream-restore
+load-module module-card-restore
+load-module module-native-protocol-unix
+load-module module-default-device-restore
+load-module module-always-sink
+load-module module-suspend-on-idle
+
+# Virtual null sink — Chrome plays audio here
+load-module module-null-sink sink_name=jibri-sink sink_properties=device.description="Jibri-Virtual-Output"
+
+# Make its monitor the default source — ffmpeg captures from here
+set-default-sink jibri-sink
+set-default-source jibri-sink.monitor

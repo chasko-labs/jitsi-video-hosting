@@ -3,10 +3,20 @@ FROM jitsi/jibri:stable
 # Install dbus — Chrome 143+ requires a running dbus session or it hangs on launch.
 # Also install fontconfig (fixes cache warnings), and the SSM agent for ECS Exec.
 RUN apt-get update -qq \
-    && apt-get install -y --no-install-recommends dbus dbus-x11 fontconfig curl \
+    && apt-get install -y --no-install-recommends dbus dbus-x11 fontconfig curl pulseaudio-utils \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /run/dbus \
     && dbus-uuidgen > /etc/machine-id
+
+# Replace PulseAudio config: use virtual null sinks instead of ALSA loopback (snd-aloop).
+# The ECS-optimized AMI does NOT have the snd-aloop kernel module, so the upstream
+# .asoundrc (which references hw:Loopback) causes PulseAudio to fail silently.
+# CRITICAL: override the USER-LEVEL config at /home/jibri/.config/pulse/default.pa
+# (PulseAudio reads user config first, ignores /etc/pulse/default.pa)
+COPY pulse-default.pa /etc/pulse/default.pa
+COPY pulse-user-default.pa /home/jibri/.config/pulse/default.pa
+COPY asoundrc /home/jibri/.asoundrc
+RUN chown jibri:jibri /home/jibri/.asoundrc /home/jibri/.config/pulse/default.pa
 
 # Install AWS SSM agent for ECS Exec (allows `aws ecs execute-command` into container)
 RUN curl -fsSL "https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb" -o /tmp/ssm-agent.deb \
@@ -42,3 +52,7 @@ RUN chmod +x /config/finalize.sh
 # Override Jibri launch script with verbose chromedriver logging
 COPY launch-override.sh /opt/jitsi/jibri/launch.sh
 RUN chmod +x /opt/jitsi/jibri/launch.sh
+
+# Override logging config to output to console (stdout → CloudWatch)
+# instead of files — gives visibility into Selenium session creation
+COPY logging.properties /etc/jitsi/jibri/logging.properties

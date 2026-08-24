@@ -1,0 +1,27 @@
+# PulseAudio config for Jibri recording WITHOUT snd-aloop kernel module.
+# Uses virtual null sinks instead of hardware loopback devices.
+# This makes Jibri recording work on any EC2 instance type / kernel.
+
+.fail
+
+# Core modules
+load-module module-device-restore
+load-module module-stream-restore
+load-module module-card-restore
+load-module module-augment-properties
+load-module module-native-protocol-unix
+load-module module-default-device-restore
+load-module module-always-sink
+load-module module-intended-roles
+load-module module-suspend-on-idle
+load-module module-position-event-sounds
+
+# Virtual audio devices (replaces snd-aloop hardware loopback)
+# jibri-sink: where Chrome plays audio to (capture from its monitor)
+load-module module-null-sink sink_name=jibri-sink sink_properties=device.description="Jibri-Recording-Sink"
+# Make the monitor of jibri-sink the default source (what ffmpeg captures from)
+load-module module-remap-source source_name=jibri-source master=jibri-sink.monitor source_properties=device.description="Jibri-Recording-Source"
+
+# Set defaults
+set-default-sink jibri-sink
+set-default-source jibri-source

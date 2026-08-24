@@ -1,0 +1,12 @@
+# ALSA config that routes everything through PulseAudio.
+# Replaces the upstream .asoundrc that references hw:Loopback (snd-aloop).
+# With this config, Chrome's ALSA output goes to PulseAudio's null sink,
+# and ffmpeg captures from PulseAudio's monitor source.
+
+pcm.!default {
+    type pulse
+}
+
+ctl.!default {
+    type pulse
+}

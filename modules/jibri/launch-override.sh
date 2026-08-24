@@ -14,6 +14,9 @@ echo "[launch.sh] pulseaudio check: $(
 	pulseaudio --check 2>&1
 	echo exit=$?
 )" >&2
+echo "[launch.sh] Chrome processes: $(ps aux 2>&1 | grep -c chrom)" >&2
+echo "[launch.sh] All procs: $(ps aux 2>&1 | grep -E 'chrom|java|pulse|xorg|icewm' | grep -v grep)" >&2
+echo "[launch.sh] Listening ports: $(ss -tlnp 2>&1 | head -10)" >&2
 echo "[launch.sh] Starting Jibri JVM..." >&2
 
 exec java \
