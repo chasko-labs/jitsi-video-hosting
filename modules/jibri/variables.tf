@@ -92,3 +92,10 @@ variable "task_cpu" {
   type        = number
   default     = 1536
 }
+
+
+variable "jibri_image" {
+  description = "Docker image for the Jibri container (ECR URL with tag)"
+  type        = string
+  default     = "170473530355.dkr.ecr.us-west-2.amazonaws.com/jitsi-jibri:latest"
+}

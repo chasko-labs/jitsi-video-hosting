@@ -173,7 +173,7 @@ resource "aws_ecs_capacity_provider" "jibri" {
 resource "aws_ecs_task_definition" "jibri" {
   family                   = "${var.project_name}-jibri"
   requires_compatibilities = ["EC2"]
-  network_mode             = "awsvpc"
+  network_mode             = "bridge"
   task_role_arn            = aws_iam_role.jibri_task.arn
   execution_role_arn       = var.ecs_task_execution_role_arn
 
@@ -184,7 +184,7 @@ resource "aws_ecs_task_definition" "jibri" {
 
   container_definitions = jsonencode([{
     name      = "jibri"
-    image     = "jitsi/jibri:stable"
+    image     = var.jibri_image
     essential = true
     memory    = var.task_memory
     cpu       = var.task_cpu
@@ -220,7 +220,10 @@ resource "aws_ecs_task_definition" "jibri" {
       { name = "JIBRI_FINALIZE_RECORDING_SCRIPT_PATH", value = "/config/finalize.sh" },
       { name = "RECORDINGS_BUCKET", value = var.recordings_bucket },
       { name = "DISPLAY", value = ":0" },
-      { name = "TZ", value = "UTC" }
+      { name = "TZ", value = "UTC" },
+      { name = "PUBLIC_URL", value = "https://meet.clouddelnorte.org" },
+      { name = "CHROMIUM_FLAGS", value = "--use-fake-ui-for-media-stream,--start-maximized,--kiosk,--autoplay-policy=no-user-gesture-required,--disable-infobars,--ignore-certificate-errors,--disable-dev-shm-usage,--disable-setuid-sandbox,--disable-background-timer-throttling,--disable-backgrounding-occluded-windows,--disable-renderer-backgrounding" },
+      { name = "DBUS_SESSION_BUS_ADDRESS", value = "unix:path=/run/dbus/system_bus_socket" }
     ]
 
     secrets = [
@@ -258,10 +261,8 @@ resource "aws_ecs_service" "jibri" {
     weight            = 1
   }
 
-  network_configuration {
-    subnets         = var.subnet_ids
-    security_groups = [var.security_group_id]
-  }
+  # Bridge mode: no network_configuration needed.
+  # The task uses the EC2 host's network stack (inherits internet access).
 
   deployment_circuit_breaker {
     enable   = true
