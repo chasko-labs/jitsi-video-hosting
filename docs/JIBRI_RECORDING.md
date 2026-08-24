@@ -4,148 +4,217 @@ Jibri provides server-side recording for Jitsi Meet. This stack uses one Jibri i
 
 ---
 
-## Current State (2026-08-15)
+## Current State (2026-08-24)
 
-| component                   | value                                                                                        |
-| --------------------------- | -------------------------------------------------------------------------------------------- |
-| ECS task definition (web)   | jitsi-web:25 — 4 containers (prosody, jicofo, jvb, web), NO jibri sidecar                    |
-| ECS task definition (jibri) | jitsi-video-platform-jibri:6 — standalone on EC2                                             |
-| custom Jibri image          | 170473530355.dkr.ecr.us-west-2.amazonaws.com/jitsi-jibri:latest (adds aws-cli + finalize.sh) |
-| XMPP_RECORDER_DOMAIN        | `hidden.meet.jitsi` (NOT `recorder.meet.jitsi` — the VirtualHost name matters)               |
-| PUBLIC_URL                  | `https://meet.clouddelnorte.org` (tells Jibri's Chrome where to connect)                     |
-| DISABLE_LOCAL_RECORDING     | `true` on jitsi-web (forces server-side Jibri instead of in-browser)                         |
-| config.js confirms          | `localRecording.disable=true`, `recordingService.enabled=true`                               |
-| S3 bucket                   | jitsi-video-platform-recordings-4b917dff                                                     |
+| component                   | value                                                                          |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| ECS task definition (web)   | jitsi-web:25 — 4 containers (prosody, jicofo, jvb, web), NO jibri sidecar      |
+| ECS task definition (jibri) | jitsi-video-platform-jibri:13 — standalone on EC2, custom image                |
+| custom Jibri image          | 170473530355.dkr.ecr.us-west-2.amazonaws.com/jitsi-jibri:latest                |
+| Dockerfile                  | `modules/jibri/Dockerfile` (in this repo, committed)                           |
+| XMPP_RECORDER_DOMAIN        | `hidden.meet.jitsi` (NOT `recorder.meet.jitsi` — the VirtualHost name matters) |
+| PUBLIC_URL                  | `http://jitsi.jitsi.local` (internal Cloud Map DNS — see Network section)      |
+| CHROMIUM_FLAGS              | see Chrome Flags section below                                                 |
+| DISABLE_LOCAL_RECORDING     | `true` on jitsi-web (forces server-side Jibri instead of in-browser)           |
+| config.js confirms          | `localRecording.disable=true`, `recordingService.enabled=true`                 |
+| S3 bucket                   | jitsi-video-platform-recordings-4b917dff                                       |
+| EC2 instance type           | t3.medium (m5.xlarge in terraform, t3.medium currently deployed)               |
 
-**Status:** dispatch chain works (UI → jicofo → jibri), but Chrome fails to launch inside the container. Suspected cause: missing Xvfb or Chrome binary issue in custom image after aws-cli install.
-
----
-
-## Known Issues
-
-**Chrome launch timeout**
-
-After receiving the start command, Jibri loads Chrome flags but Chrome never actually starts. Jicofo's 15-second timeout fires and reports "all recorders busy." Likely cause: the custom Docker image's `pip install` may have broken Chrome's apt dependencies, or Xvfb is not starting on DISPLAY=:0.
-
-**XMPP reconnection cycles**
-
-Jibri drops its XMPP connection every 3–7 minutes and reconnects. Non-blocking for normal operation but may cause recording start failures if the disconnect is timed during jicofo's dispatch window.
-
-**Jibri sidecar on Fargate crash-loops**
-
-Removed in jitsi-web:25 (standalone EC2 is the correct architecture). Earlier task definition revisions (18–24) included a Jibri sidecar container on Fargate. If anyone reverts to an older task def, the sidecar will crash-loop because SYS_ADMIN capability is not available on Fargate.
+**Status (2026-08-24):** Chrome launches and Selenium session is created successfully. Recording fails at the `driver.get(url)` step — Chrome crashes or times out when navigating to the meeting URL. Root cause identified: network/TLS issue between Jibri's Chrome and the Jitsi web container (see Remaining Fix section).
 
 ---
 
-## Next Fix Required
+## What Works
 
-1. Rebuild the custom Jibri image ensuring Chrome + chromedriver + Xvfb are intact after the aws-cli install. Test approach:
-   - Build image locally
-   - `docker run --cap-add SYS_ADMIN` the image
-   - Verify `google-chrome --version` and `chromedriver --version` produce output
-   - Verify Xvfb starts on DISPLAY=:0
-2. Alternative: use a multi-stage build that installs aws-cli in a separate stage and copies only the binary, avoiding any interaction with Chrome's apt dependencies.
+- Custom Docker image builds and deploys from `modules/jibri/Dockerfile`
+- AWS CLI v2 standalone bundle (no pip, no shared lib contamination)
+- dbus daemon running inside container (Chrome 143 requirement)
+- PulseAudio with null-sink virtual audio (no snd-aloop kernel module needed)
+- Xorg with dummy video driver on DISPLAY=:0
+- Jibri JVM starts, connects to XMPP, authenticates, joins brewery MUC
+- Jicofo detects Jibri as IDLE/HEALTHY and dispatches recording requests
+- ChromeDriver 143 starts and creates a Selenium session
+- Chrome 143 launches within the session
+
+## What Fails
+
+- Chrome crashes or hangs when `driver.get("http://jitsi.jitsi.local/cloud-del-norte-awsug")` is called
+- Error: `java.io.UncheckedIOException: Failed to execute request (POST http://localhost:PORT/session/ID/url)`
+- Jicofo marks Jibri as failed after 15-second timeout, reports "all recorders busy" to users
+
+---
+
+## Root Cause Analysis (2026-08-24 debugging session)
+
+### Timeline of investigation
+
+| Hypothesis                                   | Tested                                                    | Result                                                                         |
+| -------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| pip3 install broke Chrome shared libs        | Rebuilt with standalone AWS CLI zip                       | Chrome binary works (`--version` outputs correctly)                            |
+| Network: task ENI can't reach public URL     | Changed PUBLIC_URL to internal `http://jitsi.jitsi.local` | Same hang (but now we know Chrome DOES start)                                  |
+| Missing dbus daemon (Chrome 143 requirement) | Installed dbus + dbus-x11, added s6 service               | dbus running, RealtimeKit activated — not the blocker                          |
+| Chrome flags (sandbox, GPU, DevTools port)   | Tried every combination documented for Docker Jibri       | No effect on the hang                                                          |
+| Missing /dev/snd (ALSA loopback)             | Replaced instance (new user_data)                         | snd-aloop module not available on Amazon Linux 2 ECS AMI                       |
+| PulseAudio failing without audio device      | Added null-sink config to user-level default.pa           | PA starts via dbus but pactl check still exit=1 at boot                        |
+| Chrome never launching at all                | Added console logging to JVM                              | REVEALED: Chrome DOES launch, session IS created                               |
+| Selenium can't talk to ChromeDriver          | Console logs showed the actual error                      | POST to chromedriver succeeds for session creation, fails on `driver.get(url)` |
+
+### Actual failure point
+
+Chrome starts, ChromeDriver creates a session (session ID visible in logs), then Chrome crashes when navigating to `http://jitsi.jitsi.local/cloud-del-norte-awsug`. The Selenium HTTP call to chromedriver fails with `UncheckedIOException`.
+
+### Most likely root causes (in order)
+
+1. **HTTP vs HTTPS**: Jitsi web may require HTTPS or redirect to it. The internal URL `http://jitsi.jitsi.local` bypasses TLS but the web app config might not work over plain HTTP. Original PUBLIC_URL was `https://meet.clouddelnorte.org`.
+
+2. **Network routing**: The Jibri task (awsvpc, private IP only, no NAT gateway) cannot reach the public internet. If Chrome needs to load external resources (CDN JS, fonts, etc.) it hangs.
+
+3. **Memory pressure**: 3GB container with 2GB shm + JVM (~512MB) + Chrome (~300MB) + Xorg + ffmpeg is tight. Chrome may OOM during page load.
+
+---
+
+## Remaining Fix (P0 — blocks Aug 30 event)
+
+**Option A (recommended): Add NAT gateway to the Jibri subnet**
+
+This gives the task ENI outbound internet access. Set PUBLIC_URL back to `https://meet.clouddelnorte.org`. Chrome loads the meeting page over the public internet like it was designed to. Cost: ~$32/month.
+
+**Option B: Configure internal TLS on jitsi-web**
+
+Add TLS termination at the web container so `https://jitsi.jitsi.local:443` works internally. Requires a self-signed cert + Chrome `--ignore-certificate-errors` flag (already in the flags list). More complex, saves $32/month.
+
+**Option C: Bridge networking**
+
+Switch the Jibri task from `awsvpc` to `bridge` network mode. The task uses the EC2 instance's network stack (which has internet via the instance's public IP). Requires terraform change to the task definition.
+
+---
+
+## Chrome Flags (task-def rev 13)
+
+```
+--use-fake-ui-for-media-stream
+--start-maximized
+--kiosk
+--autoplay-policy=no-user-gesture-required
+--disable-infobars
+--ignore-certificate-errors
+--disable-dev-shm-usage
+--disable-setuid-sandbox
+--disable-background-timer-throttling
+--disable-backgrounding-occluded-windows
+--disable-renderer-backgrounding
+```
+
+---
+
+## Custom Docker Image Layers
+
+The Dockerfile at `modules/jibri/Dockerfile` adds these layers to `jitsi/jibri:stable`:
+
+| Layer                                           | Purpose                                                        |
+| ----------------------------------------------- | -------------------------------------------------------------- |
+| dbus + dbus-x11 + fontconfig + pulseaudio-utils | Chrome 143 dbus requirement + font cache + PA control          |
+| SSM agent                                       | ECS Exec support (requires task role ssmmessages permissions)  |
+| AWS CLI v2 standalone zip                       | S3 upload in finalize.sh (no pip, no shared lib contamination) |
+| PulseAudio null-sink config                     | Virtual audio without snd-aloop kernel module                  |
+| Custom .asoundrc                                | Routes ALSA through PulseAudio (not hardware loopback)         |
+| dbus-run.sh (s6 service 05)                     | Starts dbus system bus before other services                   |
+| ssm-agent-run.sh (s6 service 06)                | Starts SSM agent for ECS Exec                                  |
+| launch-override.sh                              | JVM startup with verbose chromedriver logging + diagnostics    |
+| logging.properties                              | Console handler so Selenium output goes to CloudWatch          |
+| finalize.sh                                     | S3 upload of completed recordings                              |
+
+---
+
+## Build and Deploy
+
+```bash
+cd modules/jibri
+bash build-push.sh
+```
+
+This script:
+
+1. Authenticates to ECR (account 170473530355, us-west-2)
+2. Builds the Docker image
+3. Pushes to `170473530355.dkr.ecr.us-west-2.amazonaws.com/jitsi-jibri:latest`
+4. Forces new ECS deployment
+
+Future: CodeBuild pipeline (tracked in issue #41).
+
+---
+
+## Key Architectural Facts
+
+- **snd-aloop does NOT exist on Amazon Linux 2 ECS-optimized AMI**. The launch template's `modprobe snd-aloop` fails silently. PulseAudio null-sink replaces the hardware loopback entirely.
+- **awsvpc mode gives each task its own ENI**. The task ENI has a private IP only. Without a NAT gateway, the task cannot reach the public internet (even though the EC2 instance can via its own public IP).
+- **PulseAudio reads user config from `/home/jibri/.config/pulse/default.pa`**, NOT `/etc/pulse/default.pa`. The user-level config takes priority.
+- **Jibri's logging goes to files by default** (`/var/log/jitsi/jibri/`). Our custom `logging.properties` redirects to ConsoleHandler so it goes to CloudWatch.
+- **The Chrome pre-warm** in `40-jibri/run` (`google-chrome --timeout=1000 --headless about:blank`) runs before the JVM starts. It exits cleanly and does not interfere with recording sessions.
 
 ---
 
 ## Enable / Disable
 
-Jibri is **off by default** (`enable_jibri = false`). Merging the Jibri module into prod.tf changes nothing live until the flag is set.
-
-**Enable:**
+Jibri is **off by default** (`enable_jibri = false` in terraform). Enable with:
 
 ```bash
 # in jitsi-video-hosting-ops/terraform/terraform.tfvars
 enable_jibri = true
-
-# then apply (scale-up.pl calls terraform apply)
-cd /path/to/jitsi-video-hosting-ops/terraform/
 terraform apply
 ```
 
-**Disable (scale to zero without destroying):**
+Scale to zero without destroying:
 
 ```bash
-# set desired_count to 0 — or simply power-down the whole stack
-./power-down.pl
+aws ecs update-service --cluster jitsi-cluster --service jitsi-video-platform-jibri-service --desired-count 0 --region us-west-2 --profile jitsi-video-hosting
 ```
 
 ---
 
 ## How a Moderator Records
 
-1. Join a Jitsi room as moderator (JWT with `recording: true` claim — already set by the token-exchange lambda).
-2. Click the **·⋮** (More actions) menu → **Start recording**.
-3. Jitsi UI shows a red REC indicator while recording is active.
-4. Click **Stop recording** to end. Jibri finalizes the file and uploads it automatically.
-
-No manual intervention needed. The finalize script (`modules/jibri/finalize.sh`) runs inside the Jibri container on completion.
+1. Join a Jitsi room as moderator (JWT with `recording: true` claim)
+2. Click the three-dot menu (More actions) then Start recording
+3. Red REC indicator shows while recording is active
+4. Click Stop recording to end — Jibri finalizes and uploads to S3
 
 ---
 
 ## Where Recordings Land
 
 ```
-s3://jitsi-video-platform-recordings-<suffix>/recordings/YYYY-MM-DD/<room-name>.<format>
+s3://jitsi-video-platform-recordings-4b917dff/recordings/YYYY-MM-DD/<room-name>/
 ```
 
-Bucket name is in Terraform output `recordings_bucket_name` and in AWS console.
-
-Lifecycle rule: recordings expire after **90 days** (configurable in `aws_s3_bucket_lifecycle_configuration.recordings`).
+90-day lifecycle expiration.
 
 ---
 
-## Cost Delta
+## Cost
 
-| state                             | additional monthly cost                      |
-| --------------------------------- | -------------------------------------------- |
-| Jibri enabled, stack powered up   | +~$30/mo (1× t3.medium EC2, ~$0.0416/hr)     |
-| Jibri enabled, stack powered down | ~$0 compute; S3 storage only (~$0.023/GB/mo) |
-| Jibri disabled                    | $0                                           |
-
-The recordings S3 bucket persists through power-down and `terraform destroy` (`prevent_destroy = true`).
-
----
-
-## Why EC2, Not Fargate
-
-Jibri requires:
-
-- **Privileged container** — needed by Chrome's sandbox and device access
-- **`snd-aloop` kernel module** — ALSA loopback for audio capture
-- **`/dev/snd` device** — mounted into the container
-
-Fargate has no host OS control and does not support privileged containers. Jibri runs on a dedicated t3.medium with an ECS-optimized AMI; `snd-aloop` is loaded in EC2 user-data before the ECS agent starts the task.
+| state                     | additional monthly cost                                      |
+| ------------------------- | ------------------------------------------------------------ |
+| Jibri enabled, stack up   | ~$30/mo (1x t3.medium EC2) + ~$32/mo (NAT gateway, if added) |
+| Jibri enabled, stack down | ~$0 compute; S3 storage only                                 |
+| Jibri disabled            | $0                                                           |
 
 ---
 
 ## Troubleshooting
 
-**Record button not visible**
-
-- Confirm `ENABLE_RECORDING=1` is in the prosody container env (already set in prod.tf).
-- Confirm JWT has `recording: true` — check the token-exchange lambda claims.
-
-**Recording starts but Jibri never connects**
-
-- Verify `jibri-service` is RUNNING in ECS console.
-- Check `/ecs/jitsi-app` CloudWatch log stream `jibri/*` for XMPP auth errors.
-- Verify `jibri_xmpp_password` SSM param exists and prosody has `JIBRI_XMPP_USER=jibri` set.
-
-**S3 upload fails after recording**
-
-- Check Jibri container logs for `aws s3 cp` errors.
-- Verify `jibri-ecs-task-role` has `s3:PutObject` on the recordings bucket.
-- Confirm `RECORDINGS_BUCKET` env var matches the actual bucket name.
-
 **"All recorders are currently busy"**
 
-Jicofo dispatched to Jibri but Chrome failed to start within the 15-second timeout. Check Jibri logs for Chrome flag loading followed by silence — no further output means Chrome never launched. See "Next Fix Required" above.
+Jicofo dispatched to Jibri but Chrome failed. Check CloudWatch logs for `FailedToJoinCall`. Jicofo blacklists the instance for 1 minute after failure.
 
-**Recording button triggers local download instead of server recording**
+**Record button not visible**
 
-`DISABLE_LOCAL_RECORDING=true` is missing from jitsi-web container env. Deploy jitsi-web:25 or later which includes it. Without this flag, the UI falls back to in-browser recording (download to user's machine) instead of dispatching to Jibri.
+Confirm `ENABLE_RECORDING=1` on prosody and JWT has `recording: true`.
 
-**"No such host: recorder.meet.jitsi" in Jibri logs**
+**Recording starts but no S3 upload**
 
-`XMPP_RECORDER_DOMAIN` must be `hidden.meet.jitsi` — this matches the VirtualHost that prosody actually creates. Both prosody AND jibri must agree on this value. The name `recorder.meet.jitsi` appears in some upstream docs but is not what this stack uses.
+Check task role has `s3:PutObject` on recordings bucket. Check `RECORDINGS_BUCKET` env var matches.
+
+**Chrome session created but navigation fails**
+
+Network issue. Chrome can't reach the URL in PUBLIC_URL. Either add NAT gateway or fix internal routing.
