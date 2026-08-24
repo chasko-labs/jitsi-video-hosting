@@ -41,6 +41,9 @@ RUN mkdir -p /tmp/.org.chromium.Chromium /home/jibri/.config/pulse \
 COPY dbus-run.sh /etc/services.d/05-dbus/run
 RUN chmod +x /etc/services.d/05-dbus/run
 
+# Allow jibri user to own PulseAudio on the system dbus
+COPY pulseaudio-jibri.conf /etc/dbus-1/system.d/pulseaudio-jibri.conf
+
 # Start SSM agent for ECS Exec (allows live debugging)
 COPY ssm-agent-run.sh /etc/services.d/06-ssm-agent/run
 RUN chmod +x /etc/services.d/06-ssm-agent/run
