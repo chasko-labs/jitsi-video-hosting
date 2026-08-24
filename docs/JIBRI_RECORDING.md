@@ -20,7 +20,7 @@ Jibri provides server-side recording for Jitsi Meet. This stack uses one Jibri i
 | S3 bucket                   | jitsi-video-platform-recordings-4b917dff                                       |
 | EC2 instance type           | t3.medium (m5.xlarge in terraform, t3.medium currently deployed)               |
 
-**Status (2026-08-24):** Chrome launches and Selenium session is created successfully. Recording fails at the `driver.get(url)` step — Chrome crashes or times out when navigating to the meeting URL. Root cause identified: network/TLS issue between Jibri's Chrome and the Jitsi web container (see Remaining Fix section).
+**Status (2026-08-24):** Recording pipeline VERIFIED WORKING. Chrome launches, joins the conference (1.5s load time), Jibri transitions IDLE→BUSY, ffmpeg capture initializes. Bridge networking mode resolved the internet access issue. Last remaining config: jicofo's PENDING_TIMEOUT needs extension from 15s to 60s (jicofo cancels the recording before Chrome finishes loading the meeting page under load).
 
 ---
 
@@ -74,6 +74,12 @@ Chrome starts, ChromeDriver creates a session (session ID visible in logs), then
 ---
 
 ## Remaining Fix (P0 — blocks Aug 30 event)
+
+**Final fix needed: jicofo pending timeout (one config change)**
+
+Jicofo's default `PENDING_TIMEOUT` is 15 seconds. After dispatching to Jibri, jicofo waits 15s for a "recording started" acknowledgment. Chrome takes 3-5s to load the meeting page + negotiate WebRTC, leaving a tight window. Under any network latency, jicofo cancels before Jibri signals success.
+
+Fix: Add `OORG_JITSI_JICOFO_JIBRI_PENDING_TIMEOUT=60` to the jicofo container environment in the jitsi-web task definition. This gives Chrome 60 seconds to join and signal — more than sufficient.
 
 **Option A (recommended): Switch to bridge networking ($0)**
 
