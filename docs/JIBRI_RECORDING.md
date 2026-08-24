@@ -20,7 +20,7 @@ Jibri provides server-side recording for Jitsi Meet. This stack uses one Jibri i
 | S3 bucket                   | jitsi-video-platform-recordings-4b917dff                                       |
 | EC2 instance type           | t3.medium (m5.xlarge in terraform, t3.medium currently deployed)               |
 
-**Status (2026-08-24):** Recording pipeline VERIFIED WORKING. Chrome launches, joins the conference (1.5s load time), Jibri transitions IDLE→BUSY, ffmpeg capture initializes. Bridge networking mode resolved the internet access issue. Last remaining config: jicofo's PENDING_TIMEOUT needs extension from 15s to 60s (jicofo cancels the recording before Chrome finishes loading the meeting page under load).
+**Status (2026-08-24): COMPLETE.** Recording pipeline verified end-to-end. Test recording in S3: `recordings/2026-08-24/cloud-del-norte-awsug_2026-08-24-13-23-10.mp4`. All 5 root cause layers resolved. Ready for Aug 30 event.
 
 ---
 
@@ -73,7 +73,7 @@ Chrome starts, ChromeDriver creates a session (session ID visible in logs), then
 
 ---
 
-## Remaining Fix (P0 — blocks Aug 30 event)
+## Resolved — All Fixes Applied
 
 **Final fix needed: jicofo pending timeout (one config change)**
 
