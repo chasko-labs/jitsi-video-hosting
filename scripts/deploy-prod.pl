@@ -4,6 +4,7 @@ use warnings;
 use JSON;
 use Term::ANSIColor qw(colored);
 use POSIX qw(strftime);
+use Cwd qw(getcwd);
 use lib '../lib';
 use JitsiConfig;
 
@@ -11,6 +12,9 @@ my $config = JitsiConfig->new();
 my $AWS_PROFILE = $config->aws_profile();
 my $AWS_REGION = $config->aws_region();
 my $OPS_DIR = '../../jitsi-video-hosting-ops';
+
+# Capture scripts directory for post-deploy NLB registration
+my $scripts_dir = getcwd();
 
 sub log_message {
     my ($level, $message) = @_;
@@ -91,5 +95,23 @@ log_message('INFO', "ECS Service: " . $output_json->{ecs_service_name}{value});
 log_message('INFO', "Log Groups: " . $output_json->{jitsi_app_log_group}{value});
 log_message('INFO', "Architecture: ECS Express Mode + Service Connect (HTTP/WSS)");
 log_message('INFO', "Media Plane: On-demand NLB (created during scale-up)");
+
+# Register NLB targets after deployment (new tasks get new IPs)
+log_message('INFO', 'Waiting 30s for ECS tasks to acquire IPs...');
+sleep(30);
+
+chdir($scripts_dir) or do {
+    log_message('WARN', "Could not return to scripts dir for NLB registration");
+    log_message('INFO', "Run manually: perl scripts/register-nlb-targets.pl");
+    exit 0;
+};
+
+my $nlb_result = system("perl register-nlb-targets.pl");
+if ($nlb_result == 0) {
+    log_message('SUCCESS', 'NLB targets registered');
+} else {
+    log_message('WARN', 'NLB target registration returned non-zero — tasks may still be starting');
+    log_message('INFO', 'Run manually: perl scripts/register-nlb-targets.pl');
+}
 
 exit 0;
