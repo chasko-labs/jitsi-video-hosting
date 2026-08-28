@@ -1,9 +1,20 @@
 # Network Load Balancer for JVB UDP traffic
+# Uses subnet_mapping with Elastic IPs to guarantee static public IPs.
+# JVB_ADVERTISE_IPS in the ECS task definition MUST match these EIPs.
 resource "aws_lb" "jvb" {
   name               = "${var.project_name}-jvb-nlb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = var.subnet_ids
+
+  # subnet_mapping pins each AZ to a permanent Elastic IP.
+  # This replaces the plain `subnets` attribute — the two are mutually exclusive.
+  dynamic "subnet_mapping" {
+    for_each = var.subnet_eip_mappings
+    content {
+      subnet_id     = subnet_mapping.value.subnet_id
+      allocation_id = subnet_mapping.value.allocation_id
+    }
+  }
 
   enable_deletion_protection = false
 
