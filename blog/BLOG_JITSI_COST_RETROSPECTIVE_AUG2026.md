@@ -218,7 +218,19 @@ _Figure 1 — the meetup at 2:04:01 elapsed, 8 participants. Screen-share of a J
 
 _Figure 2 — same session at 1:10:01, 6 participants, with live closed captions running in Spanish in the left panel. Screen-share of the Amazon Braket IBEX Q1 trapped-ion device details. The captions ride the transcription-proxy container — the fifth container in the Fargate task the earlier post did not have._
 
-Both images were located by the Nova classifier over ~1600 desktop screenshots, then hand-verified. The manifest (`tools/screenshot-labeler/jitsi-screenshot-manifest.json`) carries every candidate and its score for anyone who wants to re-cut the selection.
+![Braket 30 Jitsi call sharing the JupyterLab launcher with Qiskit, PennyLane, and CUDA-Q Braket tiles, the tab-share banner reading meet.clouddelnorte.org across the top](figures/fig3-braket30-jupyterlab-launcher-shared.png)
+
+_Figure 3 — the same shared notebook environment at the launcher screen (Qiskit, PennyLane, CUDA-Q, conda_braket kernels), with the browser tab-share banner reading "Sharing meet.clouddelnorte.org to meet.clouddelnorte.org" — a screen-share of a SageMaker-hosted Braket notebook piped straight into the meeting._
+
+These images were located by the Nova classifier over ~1600 desktop screenshots, then hand-verified. The manifest (`tools/screenshot-labeler/jitsi-screenshot-manifest.json`) carries every candidate and its score for anyone who wants to re-cut the selection.
+
+## Sidebar — What the Quantum Work Inside the Call Cost
+
+The infrastructure line items above cover the platform that carried the meeting. They do not include the Amazon Braket quantum tasks the attendees ran during the August 30 session — that is a separate service in a separate account, so it stays out of the ~$210 infra total. It is worth showing anyway, because it is small and it is the point of the whole meetup.
+
+![Amazon Braket task cost table for the August 30 workshop run, itemizing SV1 simulator tasks, IonQ Forte per-task and per-shot charges, and SageMaker notebook hours, totaling about $4.94](figures/fig4-braket-workshop-task-cost.png)
+
+_Sidebar figure — the Braket task spend for the workshop run on August 30: two SV1 simulator tasks (pennies, billed by duration not shots), one IonQ Forte Enterprise job (\$0.30 per task + 200 shots at \$0.0225 = \$4.50), and ~2.64 hours of SageMaker notebook time (~\$0.13). Total for the day's real quantum work: ~\$4.94. The notebooks were deleted after, so there is no ongoing hourly charge. The simulators are free-tier-adjacent; the real-hardware shots are where the money goes._
 
 ## What I Am Fixing
 
