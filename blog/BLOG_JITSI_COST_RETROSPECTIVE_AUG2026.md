@@ -206,20 +206,19 @@ Instead, an Amazon Nova 2 multimodal-embeddings classifier (`amazon.nova-2-multi
 
 There is a pleasing symmetry to it — a Nova model finding the Nova-worthy screenshots of the platform whose bill this post is dissecting. It is also just the right way to do it: embeddings over a directory beat a human scrolling through a screenshot folder every time.
 
-## Figures (to be inserted)
+## Figures — The August Meetup, Live
 
-The images live on the mac mini desktop; paths below are the manifest source records, ordered by `jitsi_score`.
+The classifier surfaced the candidates; I picked the final figures by eye from the top of the manifest. Both frames below are from the August 30 session running at `meet.clouddelnorte.org/braket30` — the quantum-computing meetup behind the Cloud del Norte dashboard.
 
-- **Figure 1** — quantum.clouddelnorte.org session, highest-scoring frame.
-  Source: `/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 16.16.13.png` (jitsi_score 0.6171)
-- **Figure 2** — clouddelnorte meeting, second-highest.
-  Source: `/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.31.07.png` (jitsi_score 0.6162)
-- **Figure 3** — ne3d.org August meetup, highest ne3d frame.
-  Source: `/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 16.07.15.png` (jitsi_score 0.5479)
-- **Figure 4** — ne3d.org August meetup, second ne3d frame.
-  Source: `/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.39.48.png` (jitsi_score 0.5366)
+![Braket 30 Jitsi call sharing a JupyterLab notebook running a Bell-state circuit on Amazon.SV1, eight participants in the filmstrip](figures/fig1-braket30-jupyterlab-bell-state.png)
 
-_(Figure contents to be inserted from the manifest paths above — not reproduced here.)_
+_Figure 1 — the meetup at 2:04:01 elapsed, 8 participants. Screen-share of a JupyterLab notebook running a two-qubit Bell-state circuit on the `Amazon.SV1` simulator, 1000 shots, with the results histogram rendered. This is the media plane doing its job: a screen-share and eight webcam feeds routed through JVB behind the on-demand NLB._
+
+![Braket 30 Jitsi call sharing the Amazon Braket IBEX Q1 device page, live Spanish closed captions in the side panel, six participants](figures/fig2-braket30-device-details-captions.png)
+
+_Figure 2 — same session at 1:10:01, 6 participants, with live closed captions running in Spanish in the left panel. Screen-share of the Amazon Braket IBEX Q1 trapped-ion device details. The captions ride the transcription-proxy container — the fifth container in the Fargate task the earlier post did not have._
+
+Both images were located by the Nova classifier over ~1600 desktop screenshots, then hand-verified. The manifest (`tools/screenshot-labeler/jitsi-screenshot-manifest.json`) carries every candidate and its score for anyone who wants to re-cut the selection.
 
 ## What I Am Fixing
 
