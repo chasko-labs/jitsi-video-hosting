@@ -1,0 +1,2372 @@
+{
+  "model": "amazon.nova-2-multimodal-embeddings-v1:0",
+  "results": [
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 16.16.13.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.61709,
+      "confidence": 0.11632,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.50077
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.31.07.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.61621,
+      "confidence": 0.14425,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.47196
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 08.37.53.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.61613,
+      "confidence": 0.22595,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.39018
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.31.14.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.61608,
+      "confidence": 0.14998,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46611
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 19.27.29.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.60887,
+      "confidence": 0.12499,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.48388
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 20.25.09.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.6069,
+      "confidence": 0.13918,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46772
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 08.42.35.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.60533,
+      "confidence": 0.11506,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.49027
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.31.33.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.60484,
+      "confidence": 0.10092,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.50392
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 08.02.37.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.6048,
+      "confidence": 0.13501,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46979
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 19.13.22.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.60444,
+      "confidence": 0.18556,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.41889
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 18.13.46.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.59913,
+      "confidence": 0.10515,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.49397
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.31.39.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.59812,
+      "confidence": 0.12791,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.47021
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 04.15.28.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.59355,
+      "confidence": 0.11703,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.47653
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 16.08.59.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.59151,
+      "confidence": 0.08621,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.50529
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 06.34.07.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.58909,
+      "confidence": 0.14959,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43951
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 13.11.06.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.58804,
+      "confidence": 0.13908,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44896
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 17.28.49.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.5857,
+      "confidence": 0.23003,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35567
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.45.42.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.58459,
+      "confidence": 0.12928,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45531
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 19.10.26.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.58453,
+      "confidence": 0.10271,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.48182
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 04.14.43.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.58402,
+      "confidence": 0.10665,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.47737
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 19.04.22.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.58204,
+      "confidence": 0.20662,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37542
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 21.21.44.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.57978,
+      "confidence": 0.12053,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45924
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 17.12.42.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.57763,
+      "confidence": 0.16277,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.41486
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 07.13.31.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.57484,
+      "confidence": 0.11654,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.4583
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 16.16.04.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.57442,
+      "confidence": 0.16966,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.40475
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 07.02.36.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.57412,
+      "confidence": 0.15646,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.41766
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 06.39.02.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.57331,
+      "confidence": 0.20745,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.36586
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 06.12.43.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.57116,
+      "confidence": 0.12234,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44882
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 09.06.57.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.57055,
+      "confidence": 0.08842,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.48213
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 17.13.03.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56876,
+      "confidence": 0.13622,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43254
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 07.38.29.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56804,
+      "confidence": 0.13803,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43001
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 06.38.48.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56694,
+      "confidence": 0.18203,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.38491
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 07.47.51.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56583,
+      "confidence": 0.1432,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.42263
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 20.09.28.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56462,
+      "confidence": 0.13395,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43067
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 06.58.14.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56449,
+      "confidence": 0.11341,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45108
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 04.15.43.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56386,
+      "confidence": 0.10117,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46269
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260502-182527.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56316,
+      "confidence": 0.18845,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37471
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 06.34.52.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56289,
+      "confidence": 0.12831,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43458
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 08.32.22.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56111,
+      "confidence": 0.07099,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.49012
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 04.16.13.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.56095,
+      "confidence": 0.07235,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.4886
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 08.25.52.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.5606,
+      "confidence": 0.11644,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44416
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 16.31.06.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55977,
+      "confidence": 0.14507,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.41471
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 09.06.40.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55911,
+      "confidence": 0.05068,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.50843
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 18.29.46.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55896,
+      "confidence": 0.06488,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.49408
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 08.31.42.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55866,
+      "confidence": 0.06801,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.49065
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 08.30.38.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.5567,
+      "confidence": 0.07114,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.48556
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 08.42.05.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55654,
+      "confidence": 0.07308,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.48346
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 10.49.19.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55565,
+      "confidence": 0.17728,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37837
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 15.56.37.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55426,
+      "confidence": 0.08093,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.47333
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 14.43.11.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55334,
+      "confidence": 0.09412,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45922
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 04.16.29.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55236,
+      "confidence": 0.08705,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.4653
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 22.42.56.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55143,
+      "confidence": 0.18046,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37097
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 19.55.22.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.55114,
+      "confidence": 0.10878,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44236
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 08.21.01.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.54892,
+      "confidence": 0.09726,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45167
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 06.34.40.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.54814,
+      "confidence": 0.09901,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44913
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 10.49.09.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.54798,
+      "confidence": 0.16954,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37844
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 16.07.15.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.54788,
+      "confidence": 0.14197,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.4059
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 14.44.23.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.54279,
+      "confidence": 0.08696,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45583
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 15.56.58.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.54026,
+      "confidence": 0.10044,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43982
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 15.54.04.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.53977,
+      "confidence": 0.17454,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.36523
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260502-142221.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.53975,
+      "confidence": 0.1555,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.38425
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 15.53.37.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.53866,
+      "confidence": 0.06163,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.47704
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 18.49.12.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.53708,
+      "confidence": 0.08114,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45595
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.39.48.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.53662,
+      "confidence": 0.14829,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.38833
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 18.13.51.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.53653,
+      "confidence": 0.13354,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.40299
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 14.47.10.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.53574,
+      "confidence": 0.28137,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.25437
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 13.36.17.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.5338,
+      "confidence": 0.07558,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45822
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260503-064727.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.53164,
+      "confidence": 0.19251,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33914
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 18.48.44.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.5316,
+      "confidence": 0.08016,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45144
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.30.45.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.52974,
+      "confidence": 0.20592,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.32382
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 07.32.12.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.52915,
+      "confidence": 0.08207,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44709
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 19.55.02.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.52844,
+      "confidence": 0.09247,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43597
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 08.26.01.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.52716,
+      "confidence": 0.12344,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.40372
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 08.54.56.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.52487,
+      "confidence": 0.05956,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46531
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 06.02.58.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.52306,
+      "confidence": 0.13393,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.38913
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 08.42.46.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.5224,
+      "confidence": 0.19256,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.32984
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 06.14.58.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.51982,
+      "confidence": 0.07823,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44159
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 12.25.57.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.51904,
+      "confidence": 0.08687,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43217
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 07.54.58.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.51816,
+      "confidence": 0.06067,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45749
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 06.34.13.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.51698,
+      "confidence": 0.05779,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45919
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 15.53.37.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.51688,
+      "confidence": 0.2195,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29738
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 17.54.26.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.51483,
+      "confidence": 0.04563,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46919
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 14.04.24.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.51308,
+      "confidence": 0.08255,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43053
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 12.08.40.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.51058,
+      "confidence": 0.13085,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37973
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 11.21.50.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.50978,
+      "confidence": 0.2326,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.27718
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 16.13.47.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.50945,
+      "confidence": 0.17154,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33791
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 06.44.52.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.50932,
+      "confidence": 0.20186,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30746
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 15.16.37.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.50913,
+      "confidence": 0.1182,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.39093
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260502-150024.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.50691,
+      "confidence": 0.17819,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.32872
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 15.21.25.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.50201,
+      "confidence": 0.04301,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.459
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 15.15.52.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.50087,
+      "confidence": 0.14422,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35665
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260502-182551.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49954,
+      "confidence": 0.15354,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.34601
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 17.34.23.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49889,
+      "confidence": 0.12324,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37565
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 06.36.10.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49826,
+      "confidence": 0.11946,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.3788
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 16.13.43.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49768,
+      "confidence": 0.13993,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35775
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 20.16.11.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49667,
+      "confidence": 0.17595,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.32072
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.58.19.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49545,
+      "confidence": 0.19583,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29961
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 14.42.43.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49534,
+      "confidence": 0.04063,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45472
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 07.54.49.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49381,
+      "confidence": 0.08284,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.41097
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.46.39.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49362,
+      "confidence": 0.11383,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37979
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 15.58.35.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49197,
+      "confidence": 0.18407,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.3079
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.58.10.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49121,
+      "confidence": 0.13646,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35475
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-28 at 12.31.12.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.49081,
+      "confidence": 0.11919,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37161
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 06.57.16.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.48848,
+      "confidence": 0.04299,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44549
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 18.29.00.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.48647,
+      "confidence": -0.05555,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.54202
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 17.34.46.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.48579,
+      "confidence": 0.17922,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30657
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 15.33.48.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.48312,
+      "confidence": -0.01476,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.49788
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 12.31.21.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.4776,
+      "confidence": 0.08613,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.39147
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 07.12.01.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.47729,
+      "confidence": 0.06964,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.40765
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 17.02.40.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.47345,
+      "confidence": 0.1719,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30155
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 21.21.40.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.47299,
+      "confidence": 0.02564,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44735
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.32.59.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.47253,
+      "confidence": 0.11998,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35255
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 15.54.18.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.47038,
+      "confidence": 0.17273,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29765
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-140344.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46961,
+      "confidence": 0.1325,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33712
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 15.17.00.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46848,
+      "confidence": 0.15231,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.31617
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 19.08.52.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46778,
+      "confidence": 0.17685,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29093
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 21.30.40.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46707,
+      "confidence": 0.00755,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45952
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 14.05.49.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46682,
+      "confidence": 0.13365,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33317
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 06.57.24.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46642,
+      "confidence": 0.02151,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44491
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.32.31.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46499,
+      "confidence": 0.12677,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33822
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 13.54.37.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46304,
+      "confidence": 0.05309,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.40995
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.33.07.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46127,
+      "confidence": 0.13056,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33071
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-140850.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.46084,
+      "confidence": 0.14882,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.31202
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 08.43.33.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.45939,
+      "confidence": 0.02979,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.4296
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-140736.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.45247,
+      "confidence": 0.13261,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.31986
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 17.00.11.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.45009,
+      "confidence": 0.17538,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.27471
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 12.57.50.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.4495,
+      "confidence": 0.19725,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.25225
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 18.10.40.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.44689,
+      "confidence": 0.05707,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.38982
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 10.49.50.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.44477,
+      "confidence": 0.06102,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.38375
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-140353.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.44413,
+      "confidence": 0.13973,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30441
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 06.45.50.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.44254,
+      "confidence": 0.19383,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.24872
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.47.53.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.4422,
+      "confidence": 0.23674,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.20546
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 21.30.46.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.44136,
+      "confidence": -0.02678,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46814
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 08.31.01.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.43719,
+      "confidence": 0.01932,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.41787
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-140803.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.43554,
+      "confidence": 0.12832,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30721
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 06.45.30.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.43399,
+      "confidence": -0.03064,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46462
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 18.29.29.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.4335,
+      "confidence": 0.05718,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37632
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 18.21.32.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.43143,
+      "confidence": 0.04507,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.38637
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 08.31.05.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.43126,
+      "confidence": 0.01199,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.41927
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 18.27.17.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.42931,
+      "confidence": 0.05579,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37352
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 09.15.31.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.42658,
+      "confidence": -0.01033,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43692
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 14.30.15.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.4254,
+      "confidence": 0.19087,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.23453
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-141311.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.4238,
+      "confidence": 0.12158,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30222
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 06.44.31.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.42129,
+      "confidence": 0.16871,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.25258
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-29 at 17.08.37.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.41962,
+      "confidence": 0.06601,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.3536
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.59.10.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.41796,
+      "confidence": 0.01003,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.40793
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 18.10.13.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.41704,
+      "confidence": 0.05468,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.36235
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 08.28.30.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.41653,
+      "confidence": -0.02137,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.4379
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 10.50.03.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.41211,
+      "confidence": 0.10787,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30424
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-16 at 12.17.24.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.41191,
+      "confidence": -0.03523,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44713
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-26 at 18.19.30.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.40987,
+      "confidence": 0.0537,
+      "best_positive_anchor": "jitsi_generic",
+      "best_negative": 0.35617
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-141028.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.40974,
+      "confidence": 0.07089,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33885
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-141537.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.40811,
+      "confidence": 0.10155,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30656
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 07.18.36.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.40776,
+      "confidence": 0.13736,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.27039
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-26 at 18.19.36.png",
+      "meetup_dir": "ne3d",
+      "top_label": "ne3d",
+      "jitsi_score": 0.40569,
+      "confidence": 0.01183,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.39386
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 12.35.50.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.40411,
+      "confidence": 0.051,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35311
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-141035.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.40309,
+      "confidence": 0.07438,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.32871
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 12.33.13.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.40238,
+      "confidence": 0.05906,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.34332
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 18.10.54.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.4008,
+      "confidence": 0.0361,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.3647
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 10.50.31.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "ne3d",
+      "jitsi_score": 0.39845,
+      "confidence": 0.11548,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.28297
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 19.08.15.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.39639,
+      "confidence": 0.03263,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.36376
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-26 at 18.19.43.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.39572,
+      "confidence": -0.02786,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.42357
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-14 at 13.15.27.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.39314,
+      "confidence": 0.06103,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33211
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.27.17.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.39292,
+      "confidence": -0.20926,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.60219
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 18.41.58.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.38784,
+      "confidence": -0.23207,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.61991
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-29 at 13.57.07.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.38534,
+      "confidence": 0.08023,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30511
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.51.58.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.38211,
+      "confidence": 0.07762,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30449
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 13.31.32.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.38067,
+      "confidence": -0.18208,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.56275
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 18.42.43.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.38014,
+      "confidence": -0.21918,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.59932
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 18.42.22.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.37864,
+      "confidence": -0.24048,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.61912
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.28.15.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.37808,
+      "confidence": -0.23243,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.61052
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.52.35.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.37754,
+      "confidence": 0.08031,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29723
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260429-141005.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.37614,
+      "confidence": 0.05219,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.32395
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 15.58.12.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.37383,
+      "confidence": 0.0639,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30993
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.27.43.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.36957,
+      "confidence": -0.25558,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.62515
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 07.28.01.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.36497,
+      "confidence": -0.22497,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.58995
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-25 at 08.26.07.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.36493,
+      "confidence": 0.05488,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.31006
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 15.07.39.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.36484,
+      "confidence": 0.0167,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.34815
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 18.41.13.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.36245,
+      "confidence": -0.21191,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.57436
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-29 at 13.56.36.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.36223,
+      "confidence": 0.11763,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.2446
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-25 at 08.47.07.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.3621,
+      "confidence": -0.06157,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.42367
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-28 at 17.30.16.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.35763,
+      "confidence": -0.12823,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.48585
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 19.04.13.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.35399,
+      "confidence": -0.02995,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.38394
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 16.02.49.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.34975,
+      "confidence": -0.23268,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.58243
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 18.06.40.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.34616,
+      "confidence": -0.00719,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35335
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 07.03.30.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.34229,
+      "confidence": -0.01224,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35453
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 06.48.10.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.34023,
+      "confidence": 0.04625,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29397
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 13.34.05.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.34001,
+      "confidence": 0.07302,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.267
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 17.00.51.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.33941,
+      "confidence": -0.22147,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.56088
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 18.19.56.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.3394,
+      "confidence": -0.23958,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.57898
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-25 at 12.38.03.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.3381,
+      "confidence": -0.12608,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46418
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 18.19.14.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.3356,
+      "confidence": -0.20987,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.54546
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-07 at 10.38.32.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.33527,
+      "confidence": -0.12059,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.45586
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 11.23.08.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.33324,
+      "confidence": 0.08364,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.2496
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 16.36.06.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.33265,
+      "confidence": 0.00968,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.32298
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.51.14.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.32937,
+      "confidence": 0.04577,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.2836
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-07 at 13.41.55.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.32902,
+      "confidence": 0.01195,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.31707
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-19 at 11.31.30.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.32688,
+      "confidence": -0.01314,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.34002
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-07 at 13.41.47.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.32611,
+      "confidence": -0.03155,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35766
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 06.36.34.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.32314,
+      "confidence": 0.01553,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30761
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-24 at 20.02.52.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.32233,
+      "confidence": -0.19677,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.51909
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.51.24.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.32152,
+      "confidence": 0.02833,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29318
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-24 at 20.21.24.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.32147,
+      "confidence": 0.02243,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29903
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.50.30.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.32075,
+      "confidence": -0.15825,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.479
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 22.13.31.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "ne3d",
+      "jitsi_score": 0.31694,
+      "confidence": 0.09724,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.21971
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-01 at 17.00.38.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.31684,
+      "confidence": -0.23923,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.55607
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 12.31.38.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.31656,
+      "confidence": -0.04189,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.35846
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-28 at 13.33.30.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.31622,
+      "confidence": -0.23593,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.55216
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 15.22.19.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.31589,
+      "confidence": -0.29195,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.60785
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 14.51.52.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.3136,
+      "confidence": 0.01502,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.29857
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-17 at 06.45.31.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.31269,
+      "confidence": 0.00891,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30378
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.08.01.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.30899,
+      "confidence": 0.07398,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.23501
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-23 at 18.22.41.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.3076,
+      "confidence": -0.27047,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.57808
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-15 at 16.18.03.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.30316,
+      "confidence": -0.0058,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30896
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-25 at 19.11.32.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.30293,
+      "confidence": -0.27636,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.57929
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-25 at 15.24.12.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.30164,
+      "confidence": -0.21214,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.51378
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-25 at 18.11.30.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.29954,
+      "confidence": -0.07652,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.37606
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 20.36.58.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.29853,
+      "confidence": -0.23466,
+      "best_positive_anchor": "jitsi_generic",
+      "best_negative": 0.53319
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot_20260502-135439.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.29747,
+      "confidence": 0.07257,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.2249
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 22.17.07.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.29553,
+      "confidence": 0.05659,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.23894
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-25 at 12.37.42.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.29277,
+      "confidence": -0.06052,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.35329
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-31 at 09.36.41.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.29025,
+      "confidence": -0.14344,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.43369
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 20.34.43.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.28662,
+      "confidence": -0.18249,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.46911
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 14.33.26.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.28539,
+      "confidence": 0.09951,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.18587
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-23 at 09.26.59.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.28507,
+      "confidence": -0.18579,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.47086
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 22.28.21.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.28349,
+      "confidence": -0.05314,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.33663
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-16 at 12.18.52.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.28271,
+      "confidence": -0.00053,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.28324
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-23 at 06.52.00.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.27938,
+      "confidence": -0.21792,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.4973
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-07 at 10.38.48.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.272,
+      "confidence": -0.20347,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.47547
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 06.45.19.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "ne3d",
+      "jitsi_score": 0.27148,
+      "confidence": 0.03413,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.23734
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 17.47.14.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.26888,
+      "confidence": 0.01962,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.24926
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 17.47.55.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.2642,
+      "confidence": 0.03705,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.22715
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 19.49.42.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.26395,
+      "confidence": -0.18124,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.44519
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-30 at 15.01.41.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.26065,
+      "confidence": -0.04368,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30433
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.06.22.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.25606,
+      "confidence": -0.02759,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.28365
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-17 at 06.45.42.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.25324,
+      "confidence": 0.00655,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.24669
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 17.06.39.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.25095,
+      "confidence": -0.01912,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.27007
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 12.09.42.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.24579,
+      "confidence": 0.01476,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.23103
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 12.07.50.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.24509,
+      "confidence": -0.0307,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.27579
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 06.45.08.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "ne3d",
+      "jitsi_score": 0.24393,
+      "confidence": 0.01349,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.23044
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-19 at 07.06.59.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.23299,
+      "confidence": 3e-5,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.23295
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 12.09.17.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.23278,
+      "confidence": -0.08164,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.31442
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 12.36.05.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.23208,
+      "confidence": -0.04444,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.27652
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-21 at 07.12.38.png",
+      "meetup_dir": "ne3d",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.23195,
+      "confidence": 0.03631,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.19563
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 21.24.38.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.22957,
+      "confidence": 0.05024,
+      "best_positive_anchor": "jitsi_generic",
+      "best_negative": 0.17933
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-03 at 09.35.54.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.22449,
+      "confidence": 0.01207,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.21241
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-31 at 09.40.04.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.22397,
+      "confidence": -0.1295,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.35348
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-22 at 06.49.14.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.22314,
+      "confidence": -0.03396,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.2571
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-04-30 at 16.06.18.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.22042,
+      "confidence": -0.06229,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.2827
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 19.02.15.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "ne3d",
+      "jitsi_score": 0.21969,
+      "confidence": 0.02906,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.19063
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 22.13.44.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "ne3d",
+      "jitsi_score": 0.21632,
+      "confidence": 0.01628,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.20005
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-05 at 15.53.28.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.21305,
+      "confidence": -0.06249,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.27554
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-25 at 08.57.40.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.20624,
+      "confidence": -0.10204,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.30829
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-24 at 20.25.20.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.20493,
+      "confidence": -0.05451,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.25943
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-24 at 20.13.19.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.17925,
+      "confidence": -0.09678,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.27603
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 19.06.17.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.17332,
+      "confidence": -0.02649,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.1998
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-24 at 20.14.36.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.16448,
+      "confidence": -0.05615,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.22064
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/Screenshot 2026-05-02 at 13.08.12.png",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.1569,
+      "confidence": -0.00759,
+      "best_positive_anchor": "ne3d_meeting",
+      "best_negative": 0.16449
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/vegas-strip-night.jpg",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.13006,
+      "confidence": 0.04812,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.08194
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/reinvent-2017-water-lighting-pool.jpg",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.09486,
+      "confidence": 0.00257,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.09229
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/vegas-venetian-canal.jpg",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "clouddelnorte",
+      "jitsi_score": 0.07776,
+      "confidence": 0.00483,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.07293
+    },
+    {
+      "path": "/tmp/jitsi-shots/ne3d/Screenshot 2026-08-15 at 16.17.29.png",
+      "meetup_dir": "ne3d",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.05472,
+      "confidence": -0.07138,
+      "best_positive_anchor": "clouddelnorte_meeting",
+      "best_negative": 0.1261
+    },
+    {
+      "path": "/tmp/jitsi-shots/clouddelnorte/reinvent-2017-city-metropolis-urban.jpg",
+      "meetup_dir": "clouddelnorte",
+      "top_label": "not_jitsi",
+      "jitsi_score": 0.02066,
+      "confidence": -0.06167,
+      "best_positive_anchor": "video_grid",
+      "best_negative": 0.08233
+    }
+  ]
+}
