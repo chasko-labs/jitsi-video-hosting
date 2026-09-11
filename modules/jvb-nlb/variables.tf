@@ -15,8 +15,17 @@ variable "vpc_id" {
 }
 
 variable "subnet_ids" {
-  description = "List of subnet IDs for the NLB"
+  description = "DEPRECATED — use subnet_eip_mappings instead. Kept for backward compat."
   type        = list(string)
+  default     = []
+}
+
+variable "subnet_eip_mappings" {
+  description = "List of {subnet_id, allocation_id} maps — one per AZ. Pins the NLB to static Elastic IPs."
+  type = list(object({
+    subnet_id     = string
+    allocation_id = string
+  }))
 }
 
 variable "security_group_id" {

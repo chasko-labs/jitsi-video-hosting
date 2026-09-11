@@ -1,0 +1,22 @@
+{
+  "positive": {
+    "jitsi_generic": "a jitsi video conference call showing a grid of participant video tiles",
+    "clouddelnorte_meeting": "a web browser showing a video meeting at clouddelnorte.org or quantum.clouddelnorte.org",
+    "ne3d_meeting": "a web browser showing a video meeting at ne3d.org",
+    "video_grid": "a video conferencing screen with multiple webcam feeds and a toolbar of call controls"
+  },
+  "negative": {
+    "board_game": "a sumerian squares board game screen",
+    "moodle": "a moodle learning management system course page",
+    "code_editor": "a code editor with a terminal and source files",
+    "desktop": "a plain macos desktop with app windows and finder",
+    "web_article": "a web browser showing a news article or blog post",
+    "spreadsheet": "a spreadsheet or document with tables of text"
+  },
+  "label_map": {
+    "jitsi_generic": "clouddelnorte",
+    "clouddelnorte_meeting": "clouddelnorte",
+    "ne3d_meeting": "ne3d",
+    "video_grid": "clouddelnorte"
+  }
+}
